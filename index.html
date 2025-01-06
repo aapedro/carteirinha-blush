@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blush Badge Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <script src="./pixi.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #fdfde7;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+      }
+
+      #app {
+        width: 100%;
+        max-width: 800px;
+        padding: 20px;
+        position: relative;
+        text-align: center;
+      }
+
+      canvas {
+        width: 100%;
+        max-width: 1063px;
+        height: auto;
+        aspect-ratio: 1063 / 591;
+      }
+
+      .screen {
+        display: none;
+        width: 100%;
+      }
+
+      .active {
+        display: block;
+      }
+
+      .logo {
+        width: 60%;
+        max-width: 400px;
+        height: auto;
+        margin: 40px auto;
+      }
+
+      .subtitle {
+        color: #4a90e2;
+        font-size: 24px;
+        margin: 30px 0;
+      }
+
+      .comecar-button {
+        width: 200px;
+        padding: 15px;
+        margin: 30px auto;
+        background: #ffc0cb;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+        display: block;
+      }
+
+      .comecar-button:hover {
+        background: #ff9eb5;
+      }
+
+      .pixel-heart {
+        position: absolute;
+        right: 10%;
+        top: 10%;
+        width: 40px;
+        height: auto;
+      }
+
+      .input-container {
+        margin: 20px 0;
+        text-align: left;
+      }
+
+      .input-wrapper {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .input-label {
+        display: block;
+        margin: 10px 0 5px;
+        font-size: 16px;
+      }
+
+      input[type="text"], input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 768px) {
+        #app {
+          padding: 10px;
+        }
+
+        canvas {
+          width: 100%;
+          max-width: 1063px;
+          height: auto;
+          aspect-ratio: 1063 / 591;
+        }
+
+        .logo {
+          width: 80%;
+          max-width: 280px;
+        }
+
+        .subtitle {
+          font-size: 20px;
+        }
+
+        .comecar-button {
+          width: 180px;
+          font-size: 18px;
+        }
+
+        .pixel-heart {
+          width: 30px;
+          right: 5%;
+          top: 5%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        canvas {
+          width: 100%;
+          max-width: 1063px;
+          height: auto;
+          aspect-ratio: 1063 / 591;
+        }
+
+        .logo {
+          width: 90%;
+        }
+
+        .subtitle {
+          font-size: 18px;
+        }
+
+        .comecar-button {
+          width: 160px;
+          padding: 12px;
+          font-size: 16px;
+        }
+
+        .pixel-heart {
+          width: 25px;
+        }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Home Screen -->
+      <div id="homeScreen" class="screen active">
+        <img src="./assets/blushrosa.png" class="logo" alt="Blush logo" />
+        <img
+          src="./assets/coracaoazul.png"
+          class="pixel-heart"
+          alt="pixel heart"
+        />
+        <div class="subtitle">monte sua carteirinha blush!</div>
+        <button class="comecar-button" onclick="startBuilder()">Começar</button>
+      </div>
+
+      <div id="builderScreen" class="screen">
+        <!-- Inputs for builder screen -->
+        <div class="input-container">
+          <div class="input-wrapper">
+            <input type="text" id="nameInput" placeholder="Digite seu nome" oninput="updateText()"/>
+          </div>
+          <div class="input-wrapper">
+            <input type="file" id="imageInput" accept="image/*" />
+          </div>
+        </div>
+        <div id="canvasContainer">
+          <!-- Canvas will be added here dynamically -->
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
