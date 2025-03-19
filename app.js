@@ -136,6 +136,20 @@ function handleTextUpdate(event) {
 }
 
 function startBuilder() {
+  // Validate inputs before proceeding
+  const name = document.getElementById("nameInput").value.trim();
+  const occupation = document.getElementById("occupationInput").value;
+  
+  if (!name) {
+    alert("Por favor, insira seu nome");
+    return;
+  }
+  
+  if (!occupation) {
+    alert("Por favor, escolha sua ocupação");
+    return;
+  }
+
   document.getElementById("homeScreen").classList.remove("active");
   document.getElementById("builderScreen").classList.add("active");
   initPixi();

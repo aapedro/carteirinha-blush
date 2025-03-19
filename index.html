@@ -274,10 +274,6 @@
           padding: 12px;
           font-size: 16px;
         }
-
-        .pixel-heart {
-          width: 25px;
-        }
       }
     </style>
   </head>
@@ -287,16 +283,15 @@
       <div id="homeScreen" class="screen active">
         <img src="./assets/blushrosa.png" class="logo" alt="Blush logo" />
         <img
-          src="./assets/coracaoazul.png"
-          class="pixel-heart"
-          alt="pixel heart"
+          src="./assets/brilhos.png"
+          class="home-stars"
         />
+        <img
+        src="./assets/flores.png"
+        class="home-flowers"
+        alt="pixel heart"
+      />
         <div class="subtitle">monte sua carteirinha blush!</div>
-        <button class="comecar-button" onclick="startBuilder()">Começar</button>
-      </div>
-
-      <div id="builderScreen" class="screen">
-        <!-- Inputs for builder screen -->
         <div class="input-container">
           <div class="input-wrapper">
             <input
@@ -334,103 +329,107 @@
               📎 Escolha sua foto
             </button>
           </div>
+        </div>
 
-          <div class="selector-wrapper">
-            <div class="selector-item">
-              <button
-                class="selector-nav prev"
-                onclick="handleSelectorUpdate('prev', 0)"
-              >
-                ←
-              </button>
-              <span class="selector-display" id="selector0">1</span>
-              <button
-                class="selector-nav next"
-                onclick="handleSelectorUpdate('next', 0)"
-              >
-                →
-              </button>
-            </div>
+        <button class="comecar-button" onclick="startBuilder()">Começar</button>
+      </div>
 
-            <div class="selector-item">
-              <button
-                class="selector-nav prev"
-                onclick="handleSelectorUpdate('prev', 1)"
-              >
-                ←
-              </button>
-              <span class="selector-display" id="selector1">1</span>
-              <button
-                class="selector-nav next"
-                onclick="handleSelectorUpdate('next', 1)"
-              >
-                →
-              </button>
-            </div>
+      <div id="builderScreen" class="screen">
+        <div class="selector-wrapper">
+          <div class="selector-item">
+            <button
+              class="selector-nav prev"
+              onclick="handleSelectorUpdate('prev', 0)"
+            >
+              ←
+            </button>
+            <span class="selector-display" id="selector0">1</span>
+            <button
+              class="selector-nav next"
+              onclick="handleSelectorUpdate('next', 0)"
+            >
+              →
+            </button>
+          </div>
 
-            <div class="selector-item">
-              <button
-                class="selector-nav prev"
-                onclick="handleSelectorUpdate('prev', 2)"
-              >
-                ←
-              </button>
-              <span class="selector-display" id="selector2">1</span>
-              <button
-                class="selector-nav next"
-                onclick="handleSelectorUpdate('next', 2)"
-              >
-                →
-              </button>
-            </div>
+          <div class="selector-item">
+            <button
+              class="selector-nav prev"
+              onclick="handleSelectorUpdate('prev', 1)"
+            >
+              ←
+            </button>
+            <span class="selector-display" id="selector1">1</span>
+            <button
+              class="selector-nav next"
+              onclick="handleSelectorUpdate('next', 1)"
+            >
+              →
+            </button>
+          </div>
 
-            <div class="selector-item">
-              <button
-                class="selector-nav prev"
-                onclick="handleSelectorUpdate('prev', 3)"
-              >
-                ←
-              </button>
-              <span class="selector-display" id="selector3">1</span>
-              <button
-                class="selector-nav next"
-                onclick="handleSelectorUpdate('next', 3)"
-              >
-                →
-              </button>
-            </div>
+          <div class="selector-item">
+            <button
+              class="selector-nav prev"
+              onclick="handleSelectorUpdate('prev', 2)"
+            >
+              ←
+            </button>
+            <span class="selector-display" id="selector2">1</span>
+            <button
+              class="selector-nav next"
+              onclick="handleSelectorUpdate('next', 2)"
+            >
+              →
+            </button>
+          </div>
 
-            <div class="selector-item">
-              <button
-                class="selector-nav prev"
-                onclick="handleSelectorUpdate('prev', 4)"
-              >
-                ←
-              </button>
-              <span class="selector-display" id="selector4">1</span>
-              <button
-                class="selector-nav next"
-                onclick="handleSelectorUpdate('next', 4)"
-              >
-                →
-              </button>
-            </div>
+          <div class="selector-item">
+            <button
+              class="selector-nav prev"
+              onclick="handleSelectorUpdate('prev', 3)"
+            >
+              ←
+            </button>
+            <span class="selector-display" id="selector3">1</span>
+            <button
+              class="selector-nav next"
+              onclick="handleSelectorUpdate('next', 3)"
+            >
+              →
+            </button>
+          </div>
 
-            <div class="selector-item">
-              <button
-                class="selector-nav prev"
-                onclick="handleSelectorUpdate('prev', 5)"
-              >
-                ←
-              </button>
-              <span class="selector-display" id="selector5">1</span>
-              <button
-                class="selector-nav next"
-                onclick="handleSelectorUpdate('next', 5)"
-              >
-                →
-              </button>
-            </div>
+          <div class="selector-item">
+            <button
+              class="selector-nav prev"
+              onclick="handleSelectorUpdate('prev', 4)"
+            >
+              ←
+            </button>
+            <span class="selector-display" id="selector4">1</span>
+            <button
+              class="selector-nav next"
+              onclick="handleSelectorUpdate('next', 4)"
+            >
+              →
+            </button>
+          </div>
+
+          <div class="selector-item">
+            <button
+              class="selector-nav prev"
+              onclick="handleSelectorUpdate('prev', 5)"
+            >
+              ←
+            </button>
+            <span class="selector-display" id="selector5">1</span>
+            <button
+              class="selector-nav next"
+              onclick="handleSelectorUpdate('next', 5)"
+            >
+              →
+            </button>
           </div>
         </div>
         <div id="canvasContainer">
