@@ -1,139 +1,149 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: #F8FFE0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  #app {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    position: relative;
-    text-align: center;
-  }
-  
-  canvas {
-    width: 100%;
-    max-width: 1063px;
-    height: auto;
-    aspect-ratio: 1063 / 591;
-  }
-  
-  .screen {
-    display: none;
-    width: 100%;
-  }
-  
-  .active {
-    display: block;
-  }
-  
-  .logo {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-  }
-  
-  .subtitle {
-    color: #4a90e2;
-    font-size: 24px;
-    margin-bottom: 50px;
-  }
-  
-  .inputs-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .input-wrapper {
-    margin-bottom: 15px;
-    width: 100%;
-  }
-  
-  #nameInput, #occupationInput, .file-upload-button {
-    width: 70%;
-    padding: 12px;
-    border: 1px solid #ffc0cb;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  #imageInput {
-    display: none;
-  }
-  
-  .file-upload-button {
-    background: #FFB5D7;
-    color: white;
-    cursor: pointer;
-    text-align: center;
-    border: none;
-  }
-  
-  .file-upload-button:hover {
-    background: #FF97C7;
-  }
-  
-  .comecar-button {
-    width: 200px;
-    padding: 15px;
-    margin: 30px auto;
-    background: #ffc0cb;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-    transition: background-color 0.3s ease;
-    display: block;
-  }
-  
-  .comecar-button:hover {
-    background: #ff9eb5;
-  }
-  
-  .home-stars,
-  .home-flowers {
-    position: absolute;
-    pointer-events: none; /* Allows clicks to pass through to elements below */
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8ffe0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#app {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+
+canvas {
+  width: 100%;
+  max-width: 1063px;
+  height: auto;
+  aspect-ratio: 1063 / 591;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+}
+
+.active {
+  display: block;
+}
+
+.logo {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.subtitle {
+  color: #4a90e2;
+  font-size: 24px;
+  margin-bottom: 50px;
+}
+
+.inputs-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.input-wrapper {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+#nameInput,
+#occupationInput,
+.file-upload-button {
+  width: 70%;
+  padding: 12px;
+  border: 2px solid #fad2eb;
+  font-size: 20px;
+  font-family: "Courier Prime", monospace;
+  text-align: center;
+}
+
+#nameInput::placeholder,
+#occupationInput::placeholder {
+  color: rgba(0, 0, 0, 0.31);
+  font-weight: 400;
+  opacity: 1;
+}
+
+#imageInput {
+  display: none;
+}
+
+.file-upload-button {
+  background: #ffb5d7;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+.file-upload-button:hover {
+  background: #ff97c7;
+}
+
+.comecar-button {
+  width: 200px;
+  padding: 15px;
+  margin: 30px auto;
+  background: #ffc0cb;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+  display: block;
+}
+
+.comecar-button:hover {
+  background: #ff9eb5;
+}
+
+.home-stars,
+.home-flowers {
+  position: absolute;
+  pointer-events: none; /* Allows clicks to pass through to elements below */
+}
+
+.home-stars {
+  top: 10%;
+  left: 5%;
+  width: 20%;
+  scale: 1.3;
+  z-index: 1;
+}
+
+.home-flowers {
+  right: 12%;
+  width: 25%;
+  rotate: 270deg;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
   .home-stars {
-    top: 10%;
-    left: 1%;
-    width: 20%;
-    scale: 1.3;
-    z-index: 1;
+    top: 5%;
+    right: 1%;
+    width: 30%;
   }
-  
+
   .home-flowers {
-    right: 12%;
-    width: 25%;
-    rotate: 270deg;
-    z-index: 1;
+    bottom: 5%;
+    left: 1%;
+    width: 35%;
   }
-  
-  @media (max-width: 480px) {
-    .home-stars {
-      top: 5%;
-      right: 1%;
-      width: 30%;
-    }
-  
-    .home-flowers {
-      bottom: 5%;
-      left: 1%;
-      width: 35%;
-    }
-  }
+}
