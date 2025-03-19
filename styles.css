@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Courier Prime", monospace;
   background: #f8ffe0;
   min-height: 100vh;
   display: flex;
@@ -68,7 +68,6 @@ canvas {
   padding: 12px;
   border: 2px solid #fad2eb;
   font-size: 20px;
-  font-family: "Courier Prime", monospace;
   text-align: center;
 }
 
@@ -85,7 +84,7 @@ canvas {
 
 .file-upload-button {
   background: #ffb5d7;
-  color: white;
+  color: #ED75C1;
   cursor: pointer;
   text-align: center;
   border: none;
