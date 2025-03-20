@@ -14,6 +14,7 @@ const badge = {
   ribbon: 1,
   star: 1,
   symbol: 2,
+  logo: 1,
 };
 
 function createTwoToneDuotoneMatrix(shadowColor, highlightColor) {
@@ -325,7 +326,15 @@ async function loadTextures() {
   textures["symbol4"] = await PIXI.Assets.load(
     "./assets/carteirinha/symbol/purple.png"
   );
-  textures["logo"] = await PIXI.Assets.load("./assets/blushrosa.png");
+  textures["logo1"] = await PIXI.Assets.load(
+    "./assets/carteirinha/logo/green.png"
+  );
+  textures["logo2"] = await PIXI.Assets.load(
+    "./assets/carteirinha/logo/pink.png"
+  );
+  textures["logo3"] = await PIXI.Assets.load(
+    "./assets/carteirinha/logo/blue.png"
+  );
   await PIXI.Assets.load("./assets/font1.otf");
 }
 
@@ -396,7 +405,7 @@ function draw() {
   symbol.y = app.screen.height / 2;
   container.addChild(symbol);
 
-  const logo = new PIXI.Sprite(textures.logo);
+  const logo = new PIXI.Sprite(textures[`logo${badge.logo}`]);
   logo.x = 450;
   logo.y = 100;
   container.addChild(logo);
