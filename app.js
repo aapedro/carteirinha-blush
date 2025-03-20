@@ -232,8 +232,10 @@ function startBuilder() {
 }
 
 async function initPixi() {
-  const containerDiv = document.getElementById("builderScreen");
-  const containerWidth = containerDiv.clientWidth;
+  // Changed to use canvasContainer instead of builderScreen
+  const canvasContainer = document.getElementById("canvasContainer");
+  const builderScreen = document.getElementById("builderScreen");
+  const containerWidth = builderScreen.clientWidth;
   const containerHeight = containerWidth / (1063 / 591);
 
   app = new PIXI.Application();
@@ -243,7 +245,9 @@ async function initPixi() {
     backgroundAlpha: 0,
     resolution: window.devicePixelRatio || 1,
   });
-  containerDiv.appendChild(app.canvas);
+  
+  // Append canvas to canvasContainer instead of builderScreen
+  canvasContainer.appendChild(app.canvas);
   app.canvas.style.width = `${containerWidth}px`;
   app.canvas.style.height = `${containerHeight}px`;
 
@@ -255,7 +259,7 @@ async function initPixi() {
   await draw();
 
   window.addEventListener("resize", () => {
-    const newWidth = containerDiv.clientWidth;
+    const newWidth = builderScreen.clientWidth;
     const newHeight = newWidth / (1063 / 591);
 
     app.renderer.resize(1063, 591);

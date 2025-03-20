@@ -27,6 +27,11 @@ canvas {
   max-width: 1063px;
   height: auto;
   aspect-ratio: 1063 / 591;
+  margin-bottom: 30px;
+  rotate: 1.8deg;
+  border-radius: 52px;
+  /* box shadow x 0 y 4 blur 4 spread 0 98a2ef  */
+  box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
 }
 
 .screen {
