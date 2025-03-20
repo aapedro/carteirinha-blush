@@ -232,6 +232,7 @@ function startBuilder() {
 
   document.getElementById("homeScreen").classList.remove("active");
   document.getElementById("builderScreen").classList.add("active");
+  document.body.classList.add('builder-active');
   initPixi();
   initBuilderUI();
 }

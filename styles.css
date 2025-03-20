@@ -173,6 +173,10 @@ canvas {
 
 /* BUILDER */
 
+body.builder-active {
+  background: #D3F3FC;
+}
+
 .decoration-buttons,
 .color-buttons {
   display: flex;
