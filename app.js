@@ -1,6 +1,7 @@
 let app;
 let container;
 let textures = {};
+let selectedDecoration = "flower";
 
 const badge = {
   name: "DreDre",
@@ -22,12 +23,10 @@ function createTwoToneDuotoneMatrix(shadowColor, highlightColor) {
   const hg = ((highlightColor >> 8) & 0xff) / 255;
   const hb = (highlightColor & 0xff) / 255;
 
-  // Calculate the difference between highlight and shadow colors
   const dr = hr - sr;
   const dg = hg - sg;
   const db = hb - sb;
 
-  // Using luminance coefficients
   const lumR = 0.3086;
   const lumG = 0.6094;
   const lumB = 0.082;
@@ -74,49 +73,15 @@ function handleImageUpload(event) {
   if (file) {
     const reader = new FileReader();
     reader.onload = async (e) => {
-      // Remove previous uploaded image texture if it exists
       if (textures.uploadedImage) {
         PIXI.Assets.unload(textures.uploadedImage);
       }
 
-      // Create a new texture from the uploaded image
       const base64 = e.target.result;
       textures.uploadedImage = await PIXI.Assets.load(base64);
-
-      // Redraw the canvas with the new image
-      draw();
     };
     reader.readAsDataURL(file);
   }
-}
-
-function handleSelectorUpdate(direction, selectorIndex) {
-  const selectorConfig = [
-    { property: "flower", max: 3 },
-    { property: "heart", max: 3 },
-    { property: "pearl", max: 3 },
-    { property: "ribbon", max: 2 },
-    { property: "star", max: 4 },
-    { property: "symbol", max: 2 },
-  ];
-
-  const config = selectorConfig[selectorIndex];
-  const currentValue = badge[config.property];
-
-  let newValue;
-  if (direction === "next") {
-    newValue = currentValue + 1;
-    if (newValue > config.max) newValue = 0;
-  } else {
-    newValue = currentValue - 1;
-    if (newValue < 0) newValue = config.max;
-  }
-
-  badge[config.property] = newValue;
-
-  document.getElementById(`selector${selectorIndex}`).textContent = newValue;
-
-  draw();
 }
 
 function handleTextUpdate(event) {
@@ -134,33 +99,143 @@ function handleTextUpdate(event) {
   badge.text = document.getElementById("nameInput").value;
 }
 
+function initBuilderUI() {
+  document.querySelector('.decoration-btn[data-type="flower"]').classList.add('active');
+  
+  const decorationButtons = document.querySelectorAll('.decoration-btn');
+  decorationButtons.forEach(button => {
+    button.addEventListener('click', handleDecorationSelect);
+  });
+  
+  const colorButtons = document.querySelectorAll('.color-btn');
+  colorButtons.forEach(button => {
+    button.addEventListener('click', handleColorSelect);
+  });
+
+  updateColorButtonsVisibility();
+}
+
+function handleDecorationSelect(event) {
+  document.querySelectorAll('.decoration-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  const button = event.currentTarget;
+  button.classList.add('active');
+  
+  selectedDecoration = button.getAttribute('data-type');
+  
+  updateColorButtonsVisibility();
+}
+
+function handleColorSelect(event) {
+  document.querySelectorAll('.color-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  const button = event.currentTarget;
+  button.classList.add('active');
+  
+  const selectedColor = button.getAttribute('data-color');
+  
+  updateBadgeDecoration(selectedDecoration, selectedColor);
+}
+
+function updateColorButtonsVisibility() {
+  const colorButtons = document.querySelector('.color-buttons');
+  
+  if (selectedDecoration === 'photo') {
+    colorButtons.style.display = 'none';
+  } else {
+    colorButtons.style.display = 'flex';
+    
+    const availableColors = getAvailableColorsForDecoration(selectedDecoration);
+    
+    document.querySelectorAll('.color-btn').forEach(button => {
+      const color = button.getAttribute('data-color');
+      if (availableColors.includes(color)) {
+        button.style.display = 'block';
+        if (availableColors.indexOf(color) === 0) {
+          button.classList.add('active');
+        }
+      } else {
+        button.style.display = 'none';
+        button.classList.remove('active');
+      }
+    });
+  }
+}
+
+function getAvailableColorsForDecoration(decoration) {
+  switch (decoration) {
+    case 'flower':
+      return ['green', 'pink', 'blue'];
+    case 'heart':
+      return ['green', 'pink', 'blue'];
+    case 'pearl':
+      return ['pink', 'blue', 'purple'];
+    case 'ribbon':
+      return ['green', 'pink'];
+    case 'star':
+      return ['green', 'pink', 'blue', 'purple'];
+    case 'symbol':
+      return ['key', 'heart'];
+    default:
+      return ['green', 'pink', 'blue'];
+  }
+}
+
+function updateBadgeDecoration(decoration, color) {
+  if (decoration === 'photo') {
+    document.getElementById('imageInput').click();
+    return;
+  }
+  
+  let colorIndex;
+  switch (decoration) {
+    case 'symbol':
+      colorIndex = color === 'key' ? 1 : 2;
+      break;
+    default:
+      const colorMap = {
+        'green': 1,
+        'pink': 2,
+        'blue': 3,
+        'purple': 4
+      };
+      colorIndex = colorMap[color] || 1;
+  }
+  
+  badge[decoration] = colorIndex;
+  
+  draw();
+}
+
 function startBuilder() {
-  // Validate inputs before proceeding
   const name = document.getElementById("nameInput").value.trim();
   const occupation = document.getElementById("occupationInput").value;
   
-  if (!name) {
-    alert("Por favor, insira seu nome");
-    return;
-  }
+  // if (!name) {
+  //   alert("Por favor, insira seu nome");
+  //   return;
+  // }
   
-  if (!occupation) {
-    alert("Por favor, escolha sua ocupação");
-    return;
-  }
+  // if (!occupation) {
+  //   alert("Por favor, escolha sua ocupação");
+  //   return;
+  // }
 
   document.getElementById("homeScreen").classList.remove("active");
   document.getElementById("builderScreen").classList.add("active");
   initPixi();
+  initBuilderUI();
 }
 
 async function initPixi() {
-  // Get container dimensions
   const containerDiv = document.getElementById("builderScreen");
   const containerWidth = containerDiv.clientWidth;
-  const containerHeight = containerWidth / (1063 / 591); // Maintain 1063:591 ratio
+  const containerHeight = containerWidth / (1063 / 591);
 
-  // Initialize PixiJS with responsive dimensions
   app = new PIXI.Application();
   await app.init({
     width: 1063,
@@ -172,10 +247,8 @@ async function initPixi() {
   app.canvas.style.width = `${containerWidth}px`;
   app.canvas.style.height = `${containerHeight}px`;
 
-  // Load textures
   await loadTextures();
 
-  // Create container
   container = new PIXI.Container();
   app.stage.addChild(container);
   container.position.set(0, 0);
@@ -251,7 +324,6 @@ async function loadTextures() {
 function draw() {
   container.removeChildren();
 
-  // Add the base
   const base = new PIXI.Sprite(textures.base);
   base.anchor.set(0.5);
   base.x = Math.ceil(app.screen.width / 2) + 0.2;
@@ -261,11 +333,9 @@ function draw() {
   if (textures.uploadedImage) {
     const uploadedSprite = new PIXI.Sprite(textures.uploadedImage);
 
-    // Position and size
     uploadedSprite.x = 150;
     uploadedSprite.y = 100;
 
-    // Set target width and force 3:4 aspect ratio
     const targetWidth = app.screen.width * 0.22;
     const targetHeight = (targetWidth / 3) * 4;
     uploadedSprite.width = targetWidth;
@@ -282,7 +352,6 @@ function draw() {
     container.addChild(uploadedSprite);
   }
 
-  // Add the decorations
   const flower = new PIXI.Sprite(textures[`flower${badge.flower}`]);
   flower.anchor.set(0.5);
   flower.x = app.screen.width / 2;
@@ -324,7 +393,6 @@ function draw() {
   logo.y = 100;
   container.addChild(logo);
 
-  // Add the name text (your existing text code)
   const textStyle = new PIXI.TextStyle({
     fontFamily: "font1",
     fontSize: 76,
@@ -356,3 +424,5 @@ function saveBadge() {
   link.href = app.view.toDataURL();
   link.click();
 }
+
+startBuilder()

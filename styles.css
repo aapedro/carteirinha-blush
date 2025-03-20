@@ -153,3 +153,80 @@ canvas {
 }
 
 /* BUILDER */
+
+.decoration-buttons,
+.color-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.decoration-btn {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #fad2eb;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.2s;
+}
+
+.decoration-btn img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.decoration-btn.active {
+  border-color: #ff97c7;
+  background-color: #ffb5d7;
+  transform: scale(1.05);
+}
+
+.color-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fad2eb;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.color-btn.active {
+  border-color: #ff97c7;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.save-button {
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #84cafa;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+  display: block;
+}
+
+.save-button:hover {
+  background-color: #5f9ecd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .decoration-btn {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .color-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
