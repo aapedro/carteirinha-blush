@@ -139,14 +139,14 @@ canvas {
   }
   
   .home-stars {
-    top: 5%;
-    right: 1%;
-    width: 30%;
+    top: 70%;
+    width: 25%;
   }
 
   .home-flowers {
-    bottom: 5%;
-    left: 1%;
+    top: -18%;
+    rotate: 0deg;
+    left: 30%;
     width: 35%;
   }
 }
