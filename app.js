@@ -132,7 +132,6 @@ function handleTextUpdate(event) {
       break;
   }
   badge.text = document.getElementById("nameInput").value;
-  draw();
 }
 
 function startBuilder() {
