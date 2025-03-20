@@ -1,11 +1,13 @@
 let app;
 let container;
 let textures = {};
-let selectedDecoration = "flower";
+let selectedDecoration = "photo";
+let duoToneColor = 0x2e8b57;
 
 const badge = {
   name: "DreDre",
   occupation: "Blusher",
+  photo: 1,
   flower: 1,
   heart: 1,
   pearl: 2,
@@ -56,15 +58,17 @@ function createTwoToneDuotoneMatrix(shadowColor, highlightColor) {
 }
 
 function cycleOptions(direction) {
-  const select = document.getElementById('occupationInput');
+  const select = document.getElementById("occupationInput");
   const selectedIndex = select.selectedIndex;
-  
-  if (direction === 'prev') {
-    select.selectedIndex = selectedIndex > 1 ? selectedIndex - 1 : select.options.length - 1;
-  } else if (direction === 'next') {
-    select.selectedIndex = selectedIndex < select.options.length - 1 ? selectedIndex + 1 : 1;
+
+  if (direction === "prev") {
+    select.selectedIndex =
+      selectedIndex > 1 ? selectedIndex - 1 : select.options.length - 1;
+  } else if (direction === "next") {
+    select.selectedIndex =
+      selectedIndex < select.options.length - 1 ? selectedIndex + 1 : 1;
   }
-  
+
   handleTextUpdate({ target: select });
 }
 
@@ -100,129 +104,130 @@ function handleTextUpdate(event) {
 }
 
 function initBuilderUI() {
-  document.querySelector('.decoration-btn[data-type="flower"]').classList.add('active');
-  
-  const decorationButtons = document.querySelectorAll('.decoration-btn');
-  decorationButtons.forEach(button => {
-    button.addEventListener('click', handleDecorationSelect);
+  document
+    .querySelector('.decoration-btn[data-type="flower"]')
+    .classList.add("active");
+
+  const decorationButtons = document.querySelectorAll(".decoration-btn");
+  decorationButtons.forEach((button) => {
+    button.addEventListener("click", handleDecorationSelect);
   });
-  
-  const colorButtons = document.querySelectorAll('.color-btn');
-  colorButtons.forEach(button => {
-    button.addEventListener('click', handleColorSelect);
+
+  const colorButtons = document.querySelectorAll(".color-btn");
+  colorButtons.forEach((button) => {
+    button.addEventListener("click", handleColorSelect);
   });
 
   updateColorButtonsVisibility();
 }
 
 function handleDecorationSelect(event) {
-  document.querySelectorAll('.decoration-btn').forEach(btn => {
-    btn.classList.remove('active');
+  document.querySelectorAll(".decoration-btn").forEach((btn) => {
+    btn.classList.remove("active");
   });
-  
+
   const button = event.currentTarget;
-  button.classList.add('active');
-  
-  selectedDecoration = button.getAttribute('data-type');
-  
+  button.classList.add("active");
+
+  selectedDecoration = button.getAttribute("data-type");
+
   updateColorButtonsVisibility();
 }
 
 function handleColorSelect(event) {
-  document.querySelectorAll('.color-btn').forEach(btn => {
-    btn.classList.remove('active');
+  document.querySelectorAll(".color-btn").forEach((btn) => {
+    btn.classList.remove("active");
   });
-  
+
   const button = event.currentTarget;
-  button.classList.add('active');
-  
-  const selectedColor = button.getAttribute('data-color');
-  
+  button.classList.add("active");
+
+  const selectedColor = button.getAttribute("data-color");
+
   updateBadgeDecoration(selectedDecoration, selectedColor);
 }
 
 function updateColorButtonsVisibility() {
-  const colorButtons = document.querySelector('.color-buttons');
-  
-  if (selectedDecoration === 'photo') {
-    colorButtons.style.display = 'none';
-  } else {
-    colorButtons.style.display = 'flex';
-    
-    const availableColors = getAvailableColorsForDecoration(selectedDecoration);
-    
-    document.querySelectorAll('.color-btn').forEach(button => {
-      const color = button.getAttribute('data-color');
-      if (availableColors.includes(color)) {
-        button.style.display = 'block';
-        if (availableColors.indexOf(color) === 0) {
-          button.classList.add('active');
-        }
-      } else {
-        button.style.display = 'none';
-        button.classList.remove('active');
+  const colorButtons = document.querySelector(".color-buttons");
+
+  colorButtons.style.display = "flex";
+
+  const availableColors = getAvailableColorsForDecoration(selectedDecoration);
+
+  document.querySelectorAll(".color-btn").forEach((button) => {
+    const color = button.getAttribute("data-color");
+    if (availableColors.includes(color)) {
+      button.style.display = "block";
+      if (availableColors.indexOf(color) === 0) {
+        button.classList.add("active");
       }
-    });
-  }
+    } else {
+      button.style.display = "none";
+      button.classList.remove("active");
+    }
+  });
 }
 
 function getAvailableColorsForDecoration(decoration) {
   switch (decoration) {
-    case 'photo':
-      return ['green', 'pink', 'blue', 'purple'];
-    case 'flower':
-      return ['green', 'pink', 'blue'];
-    case 'heart':
-      return ['green', 'pink', 'blue'];
-    case 'pearl':
-      return ['pink', 'blue', 'purple'];
-    case 'ribbon':
-      return ['green', 'pink'];
-    case 'star':
-      return ['green', 'pink', 'blue', 'purple'];
-    case 'symbol':
-      return ['pink', 'purple'];
+    case "photo":
+      return ["green", "pink", "blue", "purple"];
+    case "flower":
+      return ["green", "pink", "blue"];
+    case "heart":
+      return ["green", "pink", "blue"];
+    case "pearl":
+      return ["pink", "blue", "purple"];
+    case "ribbon":
+      return ["green", "pink"];
+    case "star":
+      return ["green", "pink", "blue", "purple"];
+    case "symbol":
+      return ["pink", "purple"];
     default:
-      return ['green', 'pink', 'blue'];
+      return ["green", "pink", "blue"];
   }
 }
 
 function updateBadgeDecoration(decoration, color) {
-  if (decoration === 'photo') {
-    document.getElementById('imageInput').click();
-    return;
-  }
-  
   let colorIndex;
   switch (decoration) {
+    case "photo":
+      const duoToneMap = {
+        green: 0x2e8b57, // Darker green
+        pink: 0x984f79, // Darker pink (medium violet red)
+        blue: 0x4682b4, // Darker blue (steel blue)
+        purple: 0x6a5acd, // Darker purple (slate blue)
+      };
+      duoToneColor = duoToneMap[color];
     default:
       const colorMap = {
-        'green': 1,
-        'pink': 2,
-        'blue': 3,
-        'purple': 4
+        green: 1,
+        pink: 2,
+        blue: 3,
+        purple: 4,
       };
       colorIndex = colorMap[color] || 1;
   }
-  
+
   badge[decoration] = colorIndex;
-  
+
   draw();
 }
 
 function startBuilder() {
   const name = document.getElementById("nameInput").value.trim();
   const occupation = document.getElementById("occupationInput").value;
-  
-  // if (!name) {
-  //   alert("Por favor, insira seu nome");
-  //   return;
-  // }
-  
-  // if (!occupation) {
-  //   alert("Por favor, escolha sua ocupação");
-  //   return;
-  // }
+
+  if (!name) {
+    alert("Por favor, insira seu nome");
+    return;
+  }
+
+  if (!occupation) {
+    alert("Por favor, escolha sua ocupação");
+    return;
+  }
 
   document.getElementById("homeScreen").classList.remove("active");
   document.getElementById("builderScreen").classList.add("active");
@@ -244,7 +249,7 @@ async function initPixi() {
     backgroundAlpha: 0,
     resolution: window.devicePixelRatio || 1,
   });
-  
+
   // Append canvas to canvasContainer instead of builderScreen
   canvasContainer.appendChild(app.canvas);
   app.canvas.style.width = `${containerWidth}px`;
@@ -345,10 +350,10 @@ function draw() {
     uploadedSprite.height = targetHeight;
 
     const colorMatrix = new PIXI.ColorMatrixFilter();
-    colorMatrix.matrix = createTwoToneDuotoneMatrix(0x984f79, 0xFFFFFF);
+    colorMatrix.matrix = createTwoToneDuotoneMatrix(duoToneColor, 0xffffff);
 
     const brightnessFilter = new PIXI.ColorMatrixFilter();
-    brightnessFilter.brightness(1.1)
+    brightnessFilter.brightness(1.1);
 
     uploadedSprite.filters = [colorMatrix, brightnessFilter];
 
@@ -364,7 +369,7 @@ function draw() {
   const heart = new PIXI.Sprite(textures[`heart${badge.heart}`]);
   heart.anchor.set(0.5);
   heart.x = app.screen.width / 2;
-  heart.y = (app.screen.height / 2) + 30;
+  heart.y = app.screen.height / 2 + 30;
   container.addChild(heart);
 
   const pearl = new PIXI.Sprite(textures[`pearl${badge.pearl}`]);
@@ -427,5 +432,3 @@ function saveBadge() {
   link.href = app.canvas.toDataURL();
   link.click();
 }
-
-startBuilder()
