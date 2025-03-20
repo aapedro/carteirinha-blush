@@ -8,10 +8,10 @@ const badge = {
   occupation: "Blusher",
   flower: 1,
   heart: 1,
-  pearl: 1,
+  pearl: 2,
   ribbon: 1,
   star: 1,
-  symbol: 1,
+  symbol: 2,
 };
 
 function createTwoToneDuotoneMatrix(shadowColor, highlightColor) {
@@ -168,6 +168,8 @@ function updateColorButtonsVisibility() {
 
 function getAvailableColorsForDecoration(decoration) {
   switch (decoration) {
+    case 'photo':
+      return ['green', 'pink', 'blue', 'purple'];
     case 'flower':
       return ['green', 'pink', 'blue'];
     case 'heart':
@@ -179,7 +181,7 @@ function getAvailableColorsForDecoration(decoration) {
     case 'star':
       return ['green', 'pink', 'blue', 'purple'];
     case 'symbol':
-      return ['key', 'heart'];
+      return ['pink', 'purple'];
     default:
       return ['green', 'pink', 'blue'];
   }
@@ -193,9 +195,6 @@ function updateBadgeDecoration(decoration, color) {
   
   let colorIndex;
   switch (decoration) {
-    case 'symbol':
-      colorIndex = color === 'key' ? 1 : 2;
-      break;
     default:
       const colorMap = {
         'green': 1,
@@ -288,13 +287,13 @@ async function loadTextures() {
   textures["flower3"] = await PIXI.Assets.load(
     "./assets/carteirinha/flower/blue.png"
   );
-  textures["pearl1"] = await PIXI.Assets.load(
+  textures["pearl2"] = await PIXI.Assets.load(
     "./assets/carteirinha/pearl/pink.png"
   );
-  textures["pearl2"] = await PIXI.Assets.load(
+  textures["pearl3"] = await PIXI.Assets.load(
     "./assets/carteirinha/pearl/blue.png"
   );
-  textures["pearl3"] = await PIXI.Assets.load(
+  textures["pearl4"] = await PIXI.Assets.load(
     "./assets/carteirinha/pearl/purple.png"
   );
   textures["ribbon1"] = await PIXI.Assets.load(
@@ -315,11 +314,11 @@ async function loadTextures() {
   textures["star4"] = await PIXI.Assets.load(
     "./assets/carteirinha/star/purple.png"
   );
-  textures["symbol1"] = await PIXI.Assets.load(
-    "./assets/carteirinha/symbol/key.png"
-  );
   textures["symbol2"] = await PIXI.Assets.load(
-    "./assets/carteirinha/symbol/heart.png"
+    "./assets/carteirinha/symbol/pink.png"
+  );
+  textures["symbol4"] = await PIXI.Assets.load(
+    "./assets/carteirinha/symbol/purple.png"
   );
   textures["logo"] = await PIXI.Assets.load("./assets/blushrosa.png");
   await PIXI.Assets.load("./assets/font1.otf");
@@ -425,7 +424,7 @@ function draw() {
 function saveBadge() {
   const link = document.createElement("a");
   link.download = "my-badge.png";
-  link.href = app.view.toDataURL();
+  link.href = app.canvas.toDataURL();
   link.click();
 }
 
