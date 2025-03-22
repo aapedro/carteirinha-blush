@@ -176,13 +176,23 @@ body.builder-active {
   background: #D3F3FC;
 }
 
-.decoration-buttons,
 .color-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 15px;
+}
+
+.decoration-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+  max-width: 600px; /* Control max width for better organization */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .decoration-btn {
@@ -239,4 +249,38 @@ body.builder-active {
 
 .save-button:hover {
   background-color: #5f9ecd;
+}
+
+@media (min-width: 700px) {
+  .decoration-buttons {
+    flex-wrap: nowrap;
+  }
+  
+  .decoration-btn {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 699px) {
+  .decoration-buttons {
+    max-width: 340px;
+  }
+  
+  .decoration-btn {
+    width: 70px;
+    height: 70px;
+    flex: 0 0 calc(25% - 10px); 
+  }
+}
+
+@media (max-width: 480px) {
+  .decoration-buttons {
+    max-width: 280px;
+  }
+  
+  .decoration-btn {
+    width: 60px;
+    height: 60px;
+  }
 }
