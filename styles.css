@@ -269,32 +269,34 @@ body.builder-active {
   display: flex;
 }
 
-#finalScreenContainer{
+#finalScreenContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .final-top-text {
-  /* center */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px
+  margin-bottom: clamp(20px, 5vh, 40px);
+  width: 100%;
 }
 
 .poste-text {
-  font-size: 25px;
+  font-size: clamp(16px, 4vw, 25px);
   color: #3E7CB6;
   font-weight: 700;
-  line-height: 20px;
-  margin-bottom: 10px;
+  line-height: 1.2;
+  margin-bottom: clamp(5px, 1vh, 10px);
 }
 
 .hashtag-text {
-  font-size: 30px;
+  font-size: clamp(18px, 5vw, 30px);
   color: #FFA9DE;
   font-weight: 700;
   letter-spacing: 0;
@@ -306,54 +308,53 @@ body.builder-active {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: clamp(10px, 2vw, 20px);
+  width: 90%;
+  max-width: 600px;
+  margin-top: clamp(15px, 3vh, 30px);
+  margin-bottom: clamp(15px, 3vh, 30px);
 }
 
 .save-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 230px;
-  height: 100px;
+  width: clamp(140px, 40vw, 230px);
+  height: clamp(50px, 12vw, 100px);
   border: #FFA9DD 2px solid;
   color: #FFA9DD;
+  border-radius: 6px;
   background-color: transparent;
   cursor: pointer;
-  font-size: 24px;
+  font-size: clamp(16px, 3vw, 24px);
   font-weight: 700;
   transition: background-color 0.3s ease;
 }
 
 .save-button img {
-  height: 80px;
-  margin-right: 30px;
+  height: clamp(35px, 8vw, 80px);
+  margin-right: clamp(10px, 3vw, 30px);
 }
 
 .reset-button {
   padding: 5px;
-  width: 234px;
-  height: 104px;
+  width: clamp(140px, 40vw, 234px);
+  height: clamp(50px, 12vw, 104px);
   background-color: #F7FFE1;
   color: #FFA9DE;
-  font-size: 24px;
+  font-size: clamp(16px, 3vw, 24px);
   font-weight: 400;
   border: none;
   cursor: pointer;
   border-radius: 6px;
-  box-shadow: 0 4 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-}
-
-.blush-logo-final {
-  width: 200px;
-  height: auto;
-  margin: 20px 0;
-  z-index: 2;
 }
 
 .colares-top-left {
   position: fixed;
-  width: 30%;
+  width: clamp(25%, 30vw, 40%);
+  max-width: 350px;
   top: 0;
   left: 0;
   z-index: 2;
@@ -361,7 +362,8 @@ body.builder-active {
 
 .colares-bottom-right {
   position: fixed;
-  width: 20%;
+  width: clamp(20%, 25vw, 35%);
+  max-width: 300px;
   bottom: 0;
   right: 0;
   z-index: 2;
@@ -369,10 +371,15 @@ body.builder-active {
 
 #finalCanvasContainer {
   width: 100%;
-  max-width: 1063px;
-  margin: 0 auto 30px auto;
+  max-width: 95%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
+}
+
+.final-logo {
+  width: 50%;
+  max-width: 300px;
 }
 
 body.final-active {
@@ -402,6 +409,24 @@ body.final-active {
   }
 }
 
+@media (max-width: 768px) {
+  .final-top-text {
+    margin-bottom: 3vh;
+  }
+  
+  #finalButtonsContainer {
+    width: 100%;
+  }
+  
+  .colares-top-left {
+    width: 35%;
+  }
+  
+  .colares-bottom-right {
+    width: 30%;
+  }
+}
+
 @media (max-width: 480px) {
   .decoration-buttons {
     max-width: 280px;
@@ -416,13 +441,26 @@ body.final-active {
     font-size: 18px;
   }
   
-  .download-button, .restart-button {
-    width: 120px;
-    height: 45px;
-    font-size: 16px;
-  }
-
   #finalButtonsContainer {
     flex-direction: column;
+    gap: 15px;
+  }
+  
+  .save-button, .reset-button {
+    width: 85%;
+    max-width: 150px;
+  }
+  
+  .save-button img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .colares-top-left {
+    width: 45%;
+  }
+  
+  .colares-bottom-right {
+    width: 35%;
   }
 }
