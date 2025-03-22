@@ -251,6 +251,65 @@ body.builder-active {
   background-color: #5f9ecd;
 }
 
+/* FINAL SCREEN */
+#finalScreen {
+  background-color: #FFEBF8;
+  padding: 20px;
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#finalScreen.active {
+  display: flex;
+}
+
+#finalCanvasContainer {
+  width: 100%;
+  max-width: 1063px;
+  margin: 0 auto 30px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#finalCanvasContainer canvas {
+  width: 100%;
+  max-width: 1063px;
+  margin: 0 auto;
+}
+
+.final-message {
+  color: #E868B5;
+  font-size: 24px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.download-button, .restart-button {
+  width: 150px;
+  height: 55px;
+  margin: 15px;
+  font-weight: 700;
+  background: transparent;
+  border: 2px #FF97C7 solid;
+  color: #FF97C7;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.download-button:hover, .restart-button:hover {
+  background-color: #FF97C7;
+  color: white;
+}
+
+body.final-active {
+  background: #FFEBF8;
+}
+
 @media (min-width: 700px) {
   .decoration-buttons {
     flex-wrap: nowrap;
@@ -282,5 +341,15 @@ body.builder-active {
   .decoration-btn {
     width: 60px;
     height: 60px;
+  }
+  
+  .final-message {
+    font-size: 18px;
+  }
+  
+  .download-button, .restart-button {
+    width: 120px;
+    height: 45px;
+    font-size: 16px;
   }
 }

@@ -463,4 +463,23 @@ function saveBadge() {
   link.click();
 }
 
+function showFinalScreen() {
+  const finalCanvasContainer = document.getElementById("finalCanvasContainer");
+  finalCanvasContainer.innerHTML = "";
+
+  const originalCanvas = document.querySelector("#canvasContainer canvas");
+  if (originalCanvas) {
+    finalCanvasContainer.appendChild(originalCanvas);
+  }
+
+  document.querySelectorAll(".screen").forEach((screen) => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById("finalScreen").classList.add("active");
+
+  document.body.classList.remove("builder-active");
+  document.body.classList.add("final-active");
+}
+
 startBuilder();
