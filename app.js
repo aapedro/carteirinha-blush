@@ -456,13 +456,6 @@ function draw() {
   container.addChild(occupation);
 }
 
-function saveBadge() {
-  const link = document.createElement("a");
-  link.download = "my-badge.png";
-  link.href = app.canvas.toDataURL();
-  link.click();
-}
-
 function showFinalScreen() {
   const finalCanvasContainer = document.getElementById("finalCanvasContainer");
   finalCanvasContainer.innerHTML = "";
@@ -480,6 +473,13 @@ function showFinalScreen() {
 
   document.body.classList.remove("builder-active");
   document.body.classList.add("final-active");
+}
+
+function saveBadge() {
+  const link = document.createElement("a");
+  link.download = "my-badge.png";
+  link.href = app.canvas.toDataURL();
+  link.click();
 }
 
 startBuilder();
