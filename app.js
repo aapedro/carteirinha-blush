@@ -282,7 +282,12 @@ async function initPixi() {
   await draw();
 
   window.addEventListener("resize", () => {
-    const newWidth = builderScreen.clientWidth;
+    const isFinalScreen = document.getElementById("finalScreen").classList.contains("active");
+    const containerElement = isFinalScreen ? 
+      document.getElementById("finalCanvasContainer") : 
+      builderScreen;
+    
+    const newWidth = containerElement.clientWidth;
     const newHeight = newWidth / (1063 / 591);
 
     app.renderer.resize(1063, 591);
@@ -374,7 +379,7 @@ function draw() {
     uploadedSprite.x = 150;
     uploadedSprite.y = 100;
 
-    const targetWidth = app.screen.width * 0.22;
+    const targetWidth = app.screen.width * 0.25;
     const targetHeight = (targetWidth / 3) * 4;
     uploadedSprite.width = targetWidth;
     uploadedSprite.height = targetHeight;
@@ -481,5 +486,3 @@ function saveBadge() {
   link.href = app.canvas.toDataURL();
   link.click();
 }
-
-startBuilder();
