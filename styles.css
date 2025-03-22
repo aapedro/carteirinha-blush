@@ -357,7 +357,7 @@ body.builder-active {
   max-width: 350px;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: -1;
 }
 
 .colares-bottom-right {
@@ -366,7 +366,7 @@ body.builder-active {
   max-width: 300px;
   bottom: 0;
   right: 0;
-  z-index: 2;
+  z-index: -1;
 }
 
 #finalCanvasContainer {
