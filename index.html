@@ -57,7 +57,7 @@
 
         <button class="comecar-button" onclick="startBuilder()">OK</button>
       </div>
-      
+
       <!-- Builder Screen -->
       <div id="builderScreen" class="screen">
         <div id="canvasContainer"></div>
@@ -113,10 +113,25 @@
 
         <button class="save-button" onclick="showFinalScreen()">OK</button>
       </div>
-      
+
       <div id="finalScreen" class="screen">
-        <div id="finalCanvasContainer"></div>
-        <div class="final-message">✧･ﾟ: *✧･ﾟ:* sua carteirinha *:･ﾟ✧*:･ﾟ✧</div>
+        <div id="finalScreenContainer">
+          <img
+          src="./assets/colares.png"
+          class="colares-top-left"
+          alt="Decorative colares"
+        />
+        <img
+          src="./assets/colares2.png"
+          class="colares-bottom-right"
+          alt="Decorative colares"
+        />
+          <div class="final-top-text">Placeholder text above canvas</div>
+
+          <div id="finalCanvasContainer"></div>
+
+          <button class="sidebar-button">OK</button>
+        </div>
       </div>
     </div>
     <script src="app.js"></script>
