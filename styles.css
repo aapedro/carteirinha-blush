@@ -371,15 +371,16 @@ body.builder-active {
 
 #finalCanvasContainer {
   width: 100%;
-  max-width: 95%;
-  margin: 0 auto;
+  max-width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .final-logo {
   width: 50%;
-  max-width: 300px;
+  max-width: 400px;
+  position: absolute;
+  bottom: 5%;
 }
 
 body.final-active {
