@@ -304,6 +304,7 @@ body.builder-active {
 
 .colares-top-left {
   position: fixed; /* Stick to the screen edges */
+  width: 30%;
   top: 0;
   left: 0;
   z-index: 2;
@@ -311,6 +312,7 @@ body.builder-active {
 
 .colares-bottom-right {
   position: fixed;
+  width: 20%;
   bottom: 0;
   right: 0;
   z-index: 2;
