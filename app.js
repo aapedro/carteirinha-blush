@@ -151,6 +151,15 @@ function handleDecorationSelect(event) {
   selectedDecoration = button.getAttribute("data-type");
 
   updateColorButtonsVisibility();
+
+  const colorIndex = badge[selectedDecoration];
+  const colorName = colorMap[colorIndex];
+
+  const colorBtn = document.querySelector(
+    `.color-btn[data-color="${colorName}"]`
+  );
+
+  colorBtn.click();
 }
 
 function handleColorSelect(event) {
@@ -240,7 +249,7 @@ function startBuilder() {
 
   document.getElementById("homeScreen").classList.remove("active");
   document.getElementById("builderScreen").classList.add("active");
-  document.body.classList.add('builder-active');
+  document.body.classList.add("builder-active");
   initPixi();
   initBuilderUI();
 }
@@ -454,4 +463,4 @@ function saveBadge() {
   link.click();
 }
 
-startBuilder()
+startBuilder();
