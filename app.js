@@ -17,6 +17,24 @@ const badge = {
   logo: 1,
 };
 
+const colorMap = {
+  green: 1,
+  1: "green",
+  pink: 2,
+  2: "pink",
+  blue: 3,
+  3: "blue",
+  purple: 4,
+  4: "purple",
+};
+
+const duoToneMap = {
+  green: 0x2e8b57, // Darker green
+  pink: 0x984f79, // Darker pink (medium violet red)
+  blue: 0x4682b4, // Darker blue (steel blue)
+  purple: 0x6a5acd, // Darker purple (slate blue)
+};
+
 function createTwoToneDuotoneMatrix(shadowColor, highlightColor) {
   const sr = ((shadowColor >> 16) & 0xff) / 255;
   const sg = ((shadowColor >> 8) & 0xff) / 255;
@@ -172,7 +190,7 @@ function updateColorButtonsVisibility() {
 function getAvailableColorsForDecoration(decoration) {
   switch (decoration) {
     case "photo":
-      return ["green", "pink", "blue", "purple"];
+      return ["green", "pink", "blue"];
     case "flower":
       return ["green", "pink", "blue"];
     case "heart":
@@ -185,6 +203,8 @@ function getAvailableColorsForDecoration(decoration) {
       return ["green", "pink", "blue", "purple"];
     case "symbol":
       return ["pink", "purple"];
+    case "logo":
+      return ["green", "pink", "blue", "purple"];
     default:
       return ["green", "pink", "blue"];
   }
@@ -194,20 +214,8 @@ function updateBadgeDecoration(decoration, color) {
   let colorIndex;
   switch (decoration) {
     case "photo":
-      const duoToneMap = {
-        green: 0x2e8b57, // Darker green
-        pink: 0x984f79, // Darker pink (medium violet red)
-        blue: 0x4682b4, // Darker blue (steel blue)
-        purple: 0x6a5acd, // Darker purple (slate blue)
-      };
       duoToneColor = duoToneMap[color];
     default:
-      const colorMap = {
-        green: 1,
-        pink: 2,
-        blue: 3,
-        purple: 4,
-      };
       colorIndex = colorMap[color] || 1;
   }
 
@@ -220,15 +228,15 @@ function startBuilder() {
   const name = document.getElementById("nameInput").value.trim();
   const occupation = document.getElementById("occupationInput").value;
 
-  if (!name) {
-    alert("Por favor, insira seu nome");
-    return;
-  }
+  // if (!name) {
+  //   alert("Por favor, insira seu nome");
+  //   return;
+  // }
 
-  if (!occupation) {
-    alert("Por favor, escolha sua ocupação");
-    return;
-  }
+  // if (!occupation) {
+  //   alert("Por favor, escolha sua ocupação");
+  //   return;
+  // }
 
   document.getElementById("homeScreen").classList.remove("active");
   document.getElementById("builderScreen").classList.add("active");
@@ -336,6 +344,9 @@ async function loadTextures() {
   textures["logo3"] = await PIXI.Assets.load(
     "./assets/carteirinha/logo/blue.png"
   );
+  textures["logo4"] = await PIXI.Assets.load(
+    "./assets/carteirinha/logo/purple.png"
+  );
   await PIXI.Assets.load("./assets/font1.otf");
 }
 
@@ -382,6 +393,12 @@ function draw() {
   heart.y = app.screen.height / 2 + 30;
   container.addChild(heart);
 
+  const symbol = new PIXI.Sprite(textures[`symbol${badge.symbol}`]);
+  symbol.anchor.set(0.5);
+  symbol.x = app.screen.width / 2;
+  symbol.y = app.screen.height / 2;
+  container.addChild(symbol);
+
   const pearl = new PIXI.Sprite(textures[`pearl${badge.pearl}`]);
   pearl.anchor.set(0.5);
   pearl.x = app.screen.width / 2;
@@ -399,12 +416,6 @@ function draw() {
   ribbon.x = app.screen.width / 2;
   ribbon.y = app.screen.height / 2;
   container.addChild(ribbon);
-
-  const symbol = new PIXI.Sprite(textures[`symbol${badge.symbol}`]);
-  symbol.anchor.set(0.5);
-  symbol.x = app.screen.width / 2;
-  symbol.y = app.screen.height / 2;
-  container.addChild(symbol);
 
   const logo = new PIXI.Sprite(textures[`logo${badge.logo}`]);
   logo.x = 450;
@@ -442,3 +453,5 @@ function saveBadge() {
   link.href = app.canvas.toDataURL();
   link.click();
 }
+
+startBuilder()
