@@ -233,7 +233,7 @@ body.builder-active {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.save-button {
+.ok-button {
   width: 100px;
   height: 55px;
   margin: 30px auto;
@@ -247,7 +247,7 @@ body.builder-active {
   display: block;
 }
 
-.save-button:hover {
+.ok-button:hover {
   background-color: #5f9ecd;
 }
 
@@ -301,15 +301,46 @@ body.builder-active {
   z-index: 2;
 }
 
-.sidebar-button {
-  width: 120px;
-  height: 50px;
-  background-color: #F7FFE1;
-  border: 2px solid #84CAFA;
-  color: #84CAFA;
-  font-size: 18px;
-  font-weight: bold;
+#finalButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 100px;
+  border: #FFA9DD 2px solid;
+  color: #FFA9DD;
+  background-color: transparent;
   cursor: pointer;
+  font-size: 24px;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.save-button img {
+  height: 80px;
+  margin-right: 30px;
+}
+
+.reset-button {
+  padding: 5px;
+  width: 234px;
+  height: 104px;
+  background-color: #F7FFE1;
+  color: #FFA9DE;
+  font-size: 24px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 4 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -389,5 +420,9 @@ body.final-active {
     width: 120px;
     height: 45px;
     font-size: 16px;
+  }
+
+  #finalButtonsContainer {
+    flex-direction: column;
   }
 }
