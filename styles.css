@@ -1,3 +1,4 @@
+/* ---------- GENERAL STYLES ---------- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,6 +23,15 @@ body {
   text-align: center;
 }
 
+.screen {
+  display: none;
+  width: 100%;
+}
+
+.screen.active {
+  display: block;
+}
+
 canvas {
   width: 100%;
   max-width: 1063px;
@@ -30,45 +40,40 @@ canvas {
   margin-bottom: 30px;
   rotate: 1.8deg;
   border-radius: 52px;
-  /* box shadow x 0 y 4 blur 4 spread 0 98a2ef  */
   box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
 }
 
-.screen {
-  display: none;
-  width: 100%;
+/* ---------- HOME SCREEN ---------- */
+#screen-home {
+  position: relative;
 }
 
-.active {
-  display: block;
-}
-
-.logo {
+.home-logo {
   width: 100%;
   max-width: 500px;
   height: auto;
 }
 
-.subtitle {
+.home-subtitle {
   color: #4a90e2;
   font-size: 24px;
   margin-bottom: 50px;
 }
 
-.inputs-container {
+.home-inputs {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
 }
 
-.input-wrapper {
+.home-input-wrapper {
   margin-bottom: 15px;
   width: 100%;
 }
 
-#nameInput,
-#occupationInput,
-.file-upload-button {
+#input-name,
+#input-occupation,
+.home-upload-btn {
   width: 70%;
   padding: 12px;
   border: 2px solid #fad2eb;
@@ -76,18 +81,18 @@ canvas {
   text-align: center;
 }
 
-#nameInput::placeholder,
-#occupationInput::placeholder {
+#input-name::placeholder,
+#input-occupation::placeholder {
   color: rgba(0, 0, 0, 0.31);
   font-weight: 400;
   opacity: 1;
 }
 
-#imageInput {
+#input-image {
   display: none;
 }
 
-.file-upload-button {
+.home-upload-btn {
   background: #ffb5d7;
   color: #ED75C1;
   cursor: pointer;
@@ -95,11 +100,11 @@ canvas {
   border: none;
 }
 
-.file-upload-button:hover {
+.home-upload-btn:hover {
   background: #ff97c7;
 }
 
-.comecar-button {
+.home-submit-btn {
   width: 100px;
   height: 60px;
   margin: 30px auto;
@@ -113,14 +118,13 @@ canvas {
   display: block;
 }
 
-.comecar-button:hover {
+.home-submit-btn:hover {
   background: #ff9eb5;
 }
 
-.home-stars,
-.home-flowers {
+.home-decoration {
   position: absolute;
-  pointer-events: none; /* Allows clicks to pass through to elements below */
+  pointer-events: none;
 }
 
 .home-stars {
@@ -138,8 +142,9 @@ canvas {
   z-index: 1;
 }
 
+/* Home Screen - Mobile Responsiveness */
 @media (max-width: 480px) {
-  .subtitle {
+  .home-subtitle {
     font-size: 15px;
   }
   
@@ -154,48 +159,25 @@ canvas {
     left: 30%;
     width: 35%;
   }
-
-  .decoration-btn {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .color-btn {
-    width: 40px;
-    height: 40px;
-  }
-
-  canvas {
-    border-radius: 20px;
-  }
 }
 
-/* BUILDER */
-
+/* ---------- BUILDER SCREEN ---------- */
 body.builder-active {
   background: #D3F3FC;
 }
 
-.color-buttons {
+.builder-decoration-btns {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 15px;
-}
-
-.decoration-buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
-  max-width: 600px; /* Control max width for better organization */
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.decoration-btn {
+.builder-decoration-btn {
   width: 70px;
   height: 70px;
   border: 2px solid #84CAFA;
@@ -208,17 +190,25 @@ body.builder-active {
   transition: all 0.2s;
 }
 
-.decoration-btn img {
+.builder-decoration-btn img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.decoration-btn.active {
+.builder-decoration-btn.active {
   border-color: #ff97c7;
   transform: scale(1.05);
 }
 
-.color-btn {
+.builder-color-btns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.builder-color-btn {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -227,13 +217,13 @@ body.builder-active {
   transition: all 0.2s;
 }
 
-.color-btn.active {
+.builder-color-btn.active {
   border-color: #ff97c7;
   transform: scale(1.1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.ok-button {
+.builder-submit-btn {
   width: 100px;
   height: 55px;
   margin: 30px auto;
@@ -247,12 +237,56 @@ body.builder-active {
   display: block;
 }
 
-.ok-button:hover {
+.builder-submit-btn:hover {
   background-color: #5f9ecd;
 }
 
-/* FINAL SCREEN */
-#finalScreen {
+/* Builder Screen - Mobile Responsiveness */
+@media (max-width: 699px) {
+  .builder-decoration-btns {
+    max-width: 340px;
+  }
+  
+  .builder-decoration-btn {
+    width: 70px;
+    height: 70px;
+    flex: 0 0 calc(25% - 10px); 
+  }
+  
+  canvas {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .builder-decoration-btns {
+    max-width: 280px;
+  }
+  
+  .builder-decoration-btn {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .builder-color-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 700px) {
+  .builder-decoration-btns {
+    flex-wrap: nowrap;
+  }
+  
+  .builder-decoration-btn {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* ---------- FINAL SCREEN ---------- */
+#screen-final {
   background-color: #FFEBF8;
   padding: 20px;
   position: fixed;
@@ -265,11 +299,15 @@ body.builder-active {
   justify-content: center;
 }
 
-#finalScreen.active {
+#screen-final.active {
   display: flex;
 }
 
-#finalScreenContainer {
+body.final-active {
+  background: #FFEBF8;
+}
+
+.final-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -278,7 +316,7 @@ body.builder-active {
   max-width: 1200px;
 }
 
-.final-top-text {
+.final-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,7 +325,7 @@ body.builder-active {
   width: 100%;
 }
 
-.poste-text {
+.final-poste-text {
   font-size: clamp(16px, 4vw, 25px);
   color: #3E7CB6;
   font-weight: 700;
@@ -295,7 +333,7 @@ body.builder-active {
   margin-bottom: clamp(5px, 1vh, 10px);
 }
 
-.hashtag-text {
+.final-hashtag {
   font-size: clamp(18px, 5vw, 30px);
   color: #FFA9DE;
   font-weight: 700;
@@ -303,7 +341,7 @@ body.builder-active {
   z-index: 2;
 }
 
-#finalButtonsContainer {
+.final-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -315,7 +353,7 @@ body.builder-active {
   margin-bottom: clamp(15px, 3vh, 30px);
 }
 
-.save-button {
+.final-save-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -331,12 +369,12 @@ body.builder-active {
   transition: background-color 0.3s ease;
 }
 
-.save-button img {
+.final-save-btn img {
   height: clamp(35px, 8vw, 80px);
   margin-right: clamp(10px, 3vw, 30px);
 }
 
-.reset-button {
+.final-reset-btn {
   padding: 5px;
   width: clamp(140px, 40vw, 234px);
   height: clamp(50px, 12vw, 104px);
@@ -351,117 +389,78 @@ body.builder-active {
   transition: all 0.3s ease;
 }
 
-.colares-top-left {
+.final-decoration {
   position: fixed;
+  z-index: -1;
+}
+
+.final-colares-tl {
   width: clamp(25%, 30vw, 40%);
   max-width: 350px;
   top: 0;
   left: 0;
-  z-index: -1;
 }
 
-.colares-bottom-right {
-  position: fixed;
+.final-colares-br {
   width: clamp(20%, 25vw, 35%);
   max-width: 300px;
   bottom: 0;
   right: 0;
-  z-index: -1;
 }
 
-#finalCanvasContainer {
+#final-canvas-container {
   width: 100%;
-  max-width: 100%;
+  max-width: 95%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
 }
 
 .final-logo {
   width: 50%;
-  max-width: 400px;
-  position: absolute;
-  bottom: 5%;
+  max-width: 300px;
 }
 
-body.final-active {
-  background: #FFEBF8;
-}
-
-@media (min-width: 700px) {
-  .decoration-buttons {
-    flex-wrap: nowrap;
-  }
-  
-  .decoration-btn {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 699px) {
-  .decoration-buttons {
-    max-width: 340px;
-  }
-  
-  .decoration-btn {
-    width: 70px;
-    height: 70px;
-    flex: 0 0 calc(25% - 10px); 
-  }
-}
-
+/* Final Screen - Mobile Responsiveness */
 @media (max-width: 768px) {
-  .final-top-text {
+  .final-header {
     margin-bottom: 3vh;
   }
   
-  #finalButtonsContainer {
+  .final-buttons {
     width: 100%;
   }
   
-  .colares-top-left {
+  .final-colares-tl {
     width: 35%;
   }
   
-  .colares-bottom-right {
+  .final-colares-br {
     width: 30%;
   }
 }
 
 @media (max-width: 480px) {
-  .decoration-buttons {
-    max-width: 280px;
-  }
-  
-  .decoration-btn {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .final-message {
-    font-size: 18px;
-  }
-  
-  #finalButtonsContainer {
+  .final-buttons {
     flex-direction: column;
     gap: 15px;
   }
   
-  .save-button, .reset-button {
+  .final-save-btn, .final-reset-btn {
     width: 85%;
     max-width: 150px;
   }
   
-  .save-button img {
+  .final-save-btn img {
     height: 40px;
     margin-right: 10px;
   }
   
-  .colares-top-left {
+  .final-colares-tl {
     width: 45%;
   }
   
-  .colares-bottom-right {
+  .final-colares-br {
     width: 35%;
   }
 }

@@ -77,7 +77,7 @@ function createTwoToneDuotoneMatrix(shadowColor, highlightColor) {
 }
 
 function cycleOptions(direction) {
-  const select = document.getElementById("occupationInput");
+  const select = document.getElementById("input-occupation");
   const selectedIndex = select.selectedIndex;
 
   if (direction === "prev") {
@@ -110,29 +110,29 @@ function handleImageUpload(event) {
 function handleTextUpdate(event) {
   const targetId = event.target.id;
   switch (targetId) {
-    case "nameInput":
+    case "input-name":
       badge.name = event.target.value;
       break;
-    case "occupationInput":
+    case "input-occupation":
       badge.occupation = event.target.value;
       break;
     default:
       break;
   }
-  badge.text = document.getElementById("nameInput").value;
+  badge.text = document.getElementById("input-name").value;
 }
 
 function initBuilderUI() {
   document
-    .querySelector('.decoration-btn[data-type="flower"]')
+    .querySelector('.builder-decoration-btn[data-type="flower"]')
     .classList.add("active");
 
-  const decorationButtons = document.querySelectorAll(".decoration-btn");
+  const decorationButtons = document.querySelectorAll(".builder-decoration-btn");
   decorationButtons.forEach((button) => {
     button.addEventListener("click", handleDecorationSelect);
   });
 
-  const colorButtons = document.querySelectorAll(".color-btn");
+  const colorButtons = document.querySelectorAll(".builder-color-btn");
   colorButtons.forEach((button) => {
     button.addEventListener("click", handleColorSelect);
   });
@@ -141,7 +141,7 @@ function initBuilderUI() {
 }
 
 function handleDecorationSelect(event) {
-  document.querySelectorAll(".decoration-btn").forEach((btn) => {
+  document.querySelectorAll(".builder-decoration-btn").forEach((btn) => {
     btn.classList.remove("active");
   });
 
@@ -156,14 +156,14 @@ function handleDecorationSelect(event) {
   const colorName = colorMap[colorIndex];
 
   const colorBtn = document.querySelector(
-    `.color-btn[data-color="${colorName}"]`
+    `.builder-color-btn[data-color="${colorName}"]`
   );
 
   colorBtn.click();
 }
 
 function handleColorSelect(event) {
-  document.querySelectorAll(".color-btn").forEach((btn) => {
+  document.querySelectorAll(".builder-color-btn").forEach((btn) => {
     btn.classList.remove("active");
   });
 
@@ -176,13 +176,13 @@ function handleColorSelect(event) {
 }
 
 function updateColorButtonsVisibility() {
-  const colorButtons = document.querySelector(".color-buttons");
+  const colorButtons = document.querySelector(".builder-color-btns");
 
   colorButtons.style.display = "flex";
 
   const availableColors = getAvailableColorsForDecoration(selectedDecoration);
 
-  document.querySelectorAll(".color-btn").forEach((button) => {
+  document.querySelectorAll(".builder-color-btn").forEach((button) => {
     const color = button.getAttribute("data-color");
     if (availableColors.includes(color)) {
       button.style.display = "block";
@@ -234,8 +234,8 @@ function updateBadgeDecoration(decoration, color) {
 }
 
 function startBuilder() {
-  const name = document.getElementById("nameInput").value.trim();
-  const occupation = document.getElementById("occupationInput").value;
+  const name = document.getElementById("input-name").value.trim();
+  const occupation = document.getElementById("input-occupation").value;
 
   // if (!name) {
   //   alert("Por favor, insira seu nome");
@@ -247,17 +247,16 @@ function startBuilder() {
   //   return;
   // }
 
-  document.getElementById("homeScreen").classList.remove("active");
-  document.getElementById("builderScreen").classList.add("active");
+  document.getElementById("screen-home").classList.remove("active");
+  document.getElementById("screen-builder").classList.add("active");
   document.body.classList.add("builder-active");
   initPixi();
   initBuilderUI();
 }
 
 async function initPixi() {
-  // Changed to use canvasContainer instead of builderScreen
-  const canvasContainer = document.getElementById("canvasContainer");
-  const builderScreen = document.getElementById("builderScreen");
+  const canvasContainer = document.getElementById("builder-canvas-container");
+  const builderScreen = document.getElementById("screen-builder");
   const containerWidth = builderScreen.clientWidth;
   const containerHeight = containerWidth / (1063 / 591);
 
@@ -269,7 +268,6 @@ async function initPixi() {
     resolution: window.devicePixelRatio || 1,
   });
 
-  // Append canvas to canvasContainer instead of builderScreen
   canvasContainer.appendChild(app.canvas);
   app.canvas.style.width = `${containerWidth}px`;
   app.canvas.style.height = `${containerHeight}px`;
@@ -282,9 +280,9 @@ async function initPixi() {
   await draw();
 
   window.addEventListener("resize", () => {
-    const isFinalScreen = document.getElementById("finalScreen").classList.contains("active");
+    const isFinalScreen = document.getElementById("screen-final").classList.contains("active");
     const containerElement = isFinalScreen ? 
-      document.getElementById("finalCanvasContainer") : 
+      document.getElementById("final-canvas-container") : 
       builderScreen;
     
     const newWidth = containerElement.clientWidth;
@@ -462,10 +460,10 @@ function draw() {
 }
 
 function showFinalScreen() {
-  const finalCanvasContainer = document.getElementById("finalCanvasContainer");
+  const finalCanvasContainer = document.getElementById("final-canvas-container");
   finalCanvasContainer.innerHTML = "";
 
-  const originalCanvas = document.querySelector("#canvasContainer canvas");
+  const originalCanvas = document.querySelector("#builder-canvas-container canvas");
   if (originalCanvas) {
     finalCanvasContainer.appendChild(originalCanvas);
   }
@@ -474,7 +472,7 @@ function showFinalScreen() {
     screen.classList.remove("active");
   });
 
-  document.getElementById("finalScreen").classList.add("active");
+  document.getElementById("screen-final").classList.add("active");
 
   document.body.classList.remove("builder-active");
   document.body.classList.add("final-active");

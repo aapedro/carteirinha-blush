@@ -12,22 +12,22 @@
   <body>
     <div id="app">
       <!-- Home Screen -->
-      <div id="homeScreen" class="screen active">
-        <img src="./assets/blushrosa.png" class="logo" alt="Blush logo" />
-        <div class="subtitle">⋆𐙚₊˚⊹♡ monte sua carteirinha ⋆𐙚₊˚⊹♡</div>
-        <img src="./assets/brilhos.png" class="home-stars" />
-        <img src="./assets/flores.png" class="home-flowers" alt="pixel heart" />
-        <div class="inputs-container">
-          <div class="input-wrapper">
+      <div id="screen-home" class="screen active">
+        <img src="./assets/blushrosa.png" class="home-logo" alt="Blush logo" />
+        <div class="home-subtitle">⋆𐙚₊˚⊹♡ monte sua carteirinha ⋆𐙚₊˚⊹♡</div>
+        <img src="./assets/brilhos.png" class="home-decoration home-stars" />
+        <img src="./assets/flores.png" class="home-decoration home-flowers" alt="pixel heart" />
+        <div class="home-inputs">
+          <div class="home-input-wrapper">
             <input
               type="text"
-              id="nameInput"
+              id="input-name"
               placeholder="seu nome"
               oninput="handleTextUpdate(event)"
             />
           </div>
-          <div class="input-wrapper">
-            <select id="occupationInput" onchange="handleTextUpdate(event)">
+          <div class="home-input-wrapper">
+            <select id="input-occupation" onchange="handleTextUpdate(event)">
               <option value="" disabled selected hidden>ocupação</option>
               <option>clubber</option>
               <option>gatinha mimosa</option>
@@ -39,106 +39,111 @@
               <option>alma penada do tumblr</option>
             </select>
           </div>
-          <div class="input-wrapper">
+          <div class="home-input-wrapper">
             <input
               type="file"
-              id="imageInput"
+              id="input-image"
               accept="image/*"
               onchange="handleImageUpload(event)"
             />
             <button
-              class="file-upload-button"
-              onclick="document.getElementById('imageInput').click()"
+              class="home-upload-btn"
+              onclick="document.getElementById('input-image').click()"
             >
               escolha sua foto
             </button>
           </div>
         </div>
 
-        <button class="comecar-button" onclick="startBuilder()">OK</button>
+        <button class="home-submit-btn" onclick="startBuilder()">OK</button>
       </div>
 
       <!-- Builder Screen -->
-      <div id="builderScreen" class="screen">
-        <div id="canvasContainer"></div>
-        <div class="decoration-buttons">
-          <button class="decoration-btn" data-type="photo">
+      <div id="screen-builder" class="screen">
+        <div id="builder-canvas-container"></div>
+        <div class="builder-decoration-btns">
+          <button class="builder-decoration-btn" data-type="photo">
             <img src="./assets/placeholders/camera.png" alt="Logo" />
           </button>
-          <button class="decoration-btn" data-type="logo">
+          <button class="builder-decoration-btn" data-type="logo">
             <img src="./assets/placeholders/logo.png" alt="Logo" />
           </button>
-          <button class="decoration-btn" data-type="flower">
+          <button class="builder-decoration-btn" data-type="flower">
             <img src="./assets/placeholders/flower.png" alt="Flower" />
           </button>
-          <button class="decoration-btn" data-type="heart">
+          <button class="builder-decoration-btn" data-type="heart">
             <img src="./assets/placeholders/heart.png" alt="Heart" />
           </button>
-          <button class="decoration-btn" data-type="pearl">
+          <button class="builder-decoration-btn" data-type="pearl">
             <img src="./assets/placeholders/pearl.png" alt="Pearl" />
           </button>
-          <button class="decoration-btn" data-type="ribbon">
+          <button class="builder-decoration-btn" data-type="ribbon">
             <img src="./assets/placeholders/ribbon.png" alt="Ribbon" />
           </button>
-          <button class="decoration-btn" data-type="star">
+          <button class="builder-decoration-btn" data-type="star">
             <img src="./assets/placeholders/star.png" alt="Star" />
           </button>
-          <button class="decoration-btn" data-type="symbol">
+          <button class="builder-decoration-btn" data-type="symbol">
             <img src="./assets/placeholders/symbol.png" alt="Symbol" />
           </button>
         </div>
 
-        <div class="color-buttons">
+        <div class="builder-color-btns">
           <button
-            class="color-btn"
+            class="builder-color-btn"
             data-color="green"
             style="background-color: #90ee90; border-color: #84cafa"
           ></button>
           <button
-            class="color-btn"
+            class="builder-color-btn"
             data-color="pink"
             style="background-color: #ffb6c1; border-color: #ffa9de"
           ></button>
           <button
-            class="color-btn"
+            class="builder-color-btn"
             data-color="blue"
             style="background-color: #a9d0e6; border-color: #84cafa"
           ></button>
           <button
-            class="color-btn"
+            class="builder-color-btn"
             data-color="purple"
             style="background-color: #c0b9df; border-color: #84cafa"
           ></button>
         </div>
 
-        <button class="ok-button" onclick="showFinalScreen()">OK</button>
+        <button class="builder-submit-btn" onclick="showFinalScreen()">OK</button>
       </div>
 
-      <div id="finalScreen" class="screen">
-        <div id="finalScreenContainer">
+      <!-- Final Screen -->
+      <div id="screen-final" class="screen">
+        <div class="final-container">
           <img
             src="./assets/colares.png"
-            class="colares-top-left"
+            class="final-decoration final-colares-tl"
             alt="Decorative colares"
           />
           <img
             src="./assets/colares2.png"
-            class="colares-bottom-right"
+            class="final-decoration final-colares-br"
             alt="Decorative colares"
           />
-          <div class="final-top-text">
-            <div class="poste-text">poste nas redes sociais com a hashtag</div>
-            <div class="hashtag-text">#CARTEIRINHABLUSH</div>
+          <div class="final-header">
+            <div class="final-poste-text">poste nas redes sociais com a hashtag</div>
+            <div class="final-hashtag">
+              #CARTEIRINHABLUSH
+            </div>
           </div>
 
-          <div id="finalCanvasContainer"></div>
+          <div id="final-canvas-container"></div>
 
-          <div id="finalButtonsContainer">
-            <button class="save-button">
+          <div class="final-buttons">
+            <button class="final-save-btn" onclick="saveBadge()">
               <img src="./assets/disquete.png" alt="Save" />
               salvar
             </button>
-            <button class="reset-button">faça outra carteirinha</button>
+            <button class="final-reset-btn" onclick="location.reload()">
+              faça outra carteirinha
+            </button>
           </div>
 
           <img src="assets/blushazul.png" class="final-logo" alt="Blush logo" />
