@@ -255,10 +255,7 @@ function startBuilder() {
 }
 
 async function initPixi() {
-  const canvasContainer = document.getElementById("builder-canvas-container");
   const builderScreen = document.getElementById("screen-builder");
-  const containerWidth = builderScreen.clientWidth;
-  const containerHeight = containerWidth / (1063 / 591);
 
   app = new PIXI.Application();
   await app.init({
@@ -268,9 +265,7 @@ async function initPixi() {
     resolution: window.devicePixelRatio || 1,
   });
 
-  canvasContainer.appendChild(app.canvas);
-  app.canvas.style.width = `${containerWidth}px`;
-  app.canvas.style.height = `${containerHeight}px`;
+  builderScreen.insertBefore(app.canvas, builderScreen.firstChild);
 
   await loadTextures();
 
