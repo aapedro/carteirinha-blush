@@ -13,46 +13,51 @@
     <div id="app">
       <!-- Home Screen -->
       <div id="screen-home" class="screen active">
-        <img src="./assets/blushrosa.png" class="home-logo" alt="Blush logo" />
-        <div class="home-subtitle">⋆𐙚₊˚⊹♡ monte sua carteirinha ⋆𐙚₊˚⊹♡</div>
-        <img src="./assets/brilhos.png" class="home-decoration home-stars" />
-        <img src="./assets/flores.png" class="home-decoration home-flowers" alt="pixel heart" />
+        <div class="home-logo-subtitle">
+          <img
+            src="./assets/blushrosa.png"
+            class="home-logo"
+            alt="Blush logo"
+          />
+          <div class="home-subtitle">⋆𐙚₊˚⊹♡ monte sua carteirinha ⋆𐙚₊˚⊹♡</div>
+        </div>
+        <div class="home-decorations">
+          <img src="./assets/brilhos.png" class="home-decoration home-stars" />
+          <img
+            src="./assets/flores.png"
+            class="home-decoration home-flowers"
+            alt="pixel heart"
+          />
+        </div>
         <div class="home-inputs">
-          <div class="home-input-wrapper">
-            <input
-              type="text"
-              id="input-name"
-              placeholder="seu nome"
-              oninput="handleTextUpdate(event)"
-            />
-          </div>
-          <div class="home-input-wrapper">
-            <select id="input-occupation" onchange="handleTextUpdate(event)">
-              <option value="" disabled selected hidden>ocupação</option>
-              <option>clubber</option>
-              <option>gatinha mimosa</option>
-              <option>yearner</option>
-              <option>full time blogger</option>
-              <option>curadora de tiktoks</option>
-              <option>concursada em reels</option>
-              <option>cumprindo aviso no pinterest</option>
-              <option>alma penada do tumblr</option>
-            </select>
-          </div>
-          <div class="home-input-wrapper">
-            <input
-              type="file"
-              id="input-image"
-              accept="image/*"
-              onchange="handleImageUpload(event)"
-            />
-            <button
-              class="home-upload-btn"
-              onclick="document.getElementById('input-image').click()"
-            >
-              escolha sua foto
-            </button>
-          </div>
+          <input
+            type="text"
+            id="input-name"
+            placeholder="seu nome"
+            oninput="handleTextUpdate(event)"
+          />
+          <select id="input-occupation" onchange="handleTextUpdate(event)">
+            <option>clubber</option>
+            <option>gatinha mimosa</option>
+            <option>yearner</option>
+            <option>full time blogger</option>
+            <option>curadora de tiktoks</option>
+            <option>concursada em reels</option>
+            <option>cumprindo aviso no pinterest</option>
+            <option>alma penada do tumblr</option>
+          </select>
+          <input
+            type="file"
+            id="input-image-hidden"
+            accept="image/*"
+            onchange="handleImageUpload(event)"
+          />
+          <button
+            id="input-image"
+            onclick="document.getElementById('input-image').click()"
+          >
+            escolha sua foto
+          </button>
         </div>
 
         <button class="home-submit-btn" onclick="startBuilder()">OK</button>
@@ -111,7 +116,9 @@
           ></button>
         </div>
 
-        <button class="builder-submit-btn" onclick="showFinalScreen()">OK</button>
+        <button class="builder-submit-btn" onclick="showFinalScreen()">
+          OK
+        </button>
       </div>
 
       <!-- Final Screen -->
@@ -128,10 +135,10 @@
             alt="Decorative colares"
           />
           <div class="final-header">
-            <div class="final-poste-text">poste nas redes sociais com a hashtag</div>
-            <div class="final-hashtag">
-              #CARTEIRINHABLUSH
+            <div class="final-poste-text">
+              poste nas redes sociais com a hashtag
             </div>
+            <div class="final-hashtag">#CARTEIRINHABLUSH</div>
           </div>
 
           <div id="final-canvas-container"></div>
