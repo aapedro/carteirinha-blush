@@ -293,10 +293,6 @@ canvas {
   background-color: #ffebf8;
 }
 
-#screen-final.active {
-  display: flex;
-}
-
 .final-header {
   display: flex;
   flex-direction: column;
@@ -323,16 +319,19 @@ canvas {
   z-index: 2;
 }
 
-.final-buttons {
+.final-img-buttons-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: right;
+}
+
+.final-buttons {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(10px, 2vw, 20px);
-  width: 90%;
   max-width: 600px;
-  margin-top: clamp(15px, 3vh, 30px);
-  margin-bottom: clamp(15px, 3vh, 30px);
 }
 
 .final-save-btn {
