@@ -262,7 +262,7 @@ async function initPixi() {
     width: 1063,
     height: 591,
     backgroundAlpha: 0,
-    resolution: window.devicePixelRatio || 1,
+    resolution: 1
   });
 
   builderScreen.insertBefore(app.canvas, builderScreen.firstChild);
@@ -273,20 +273,6 @@ async function initPixi() {
   app.stage.addChild(container);
   container.position.set(0, 0);
   await draw();
-
-  window.addEventListener("resize", () => {
-    const isFinalScreen = document.getElementById("screen-final").classList.contains("active");
-    const containerElement = isFinalScreen ? 
-      document.getElementById("final-canvas-container") : 
-      builderScreen;
-    
-    const newWidth = containerElement.clientWidth;
-    const newHeight = newWidth / (1063 / 591);
-
-    app.renderer.resize(1063, 591);
-    app.canvas.style.width = `${newWidth}px`;
-    app.canvas.style.height = `${newHeight}px`;
-  });
 }
 
 async function loadTextures() {

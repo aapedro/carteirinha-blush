@@ -27,12 +27,11 @@
 }
 
 canvas {
-  width: 80%;
-  max-width: 1063;
-  height: auto;
+  width: 85%;
+  max-width: 900px;
   aspect-ratio: 1063 / 591;
   rotate: 1.8deg;
-  border-radius: 52px;
+  border-radius: 9%;
   box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
 }
 
@@ -57,7 +56,12 @@ canvas {
 
 .home-subtitle {
   color: #4a90e2;
-  font-size: 24px;
+  width: 100%;
+  font-size: 1em;
+  font-family: 'Overpass Mono';
+  font-weight: 700;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .home-inputs {
@@ -80,6 +84,8 @@ canvas {
   aspect-ratio: 5.9;
   border: 2px solid #fad2eb;
   font-size: 20px;
+  font-family: 'Courier Prime';
+  font-weight: 400;
   text-align: center;
 }
 
@@ -111,10 +117,6 @@ canvas {
   color: #84cafa;
   cursor: pointer;
   font-size: 1.2em;
-}
-
-.home-submit-btn:hover {
-  background: #ff9eb5;
 }
 
 .home-decorations {
@@ -161,7 +163,14 @@ canvas {
 /* ---------- BUILDER SCREEN ---------- */
 #screen-builder {
   background: #d3f3fc;
-  gap: 20px
+  gap: 50px
+}
+
+.builder-decoration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .builder-decoration-btns {
@@ -203,7 +212,6 @@ canvas {
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 15px;
 }
 
 .builder-color-btn {
@@ -282,32 +290,10 @@ canvas {
 /* ---------- FINAL SCREEN ---------- */
 #screen-final {
   background-color: #ffebf8;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
 }
 
 #screen-final.active {
   display: flex;
-}
-
-body.final-active {
-  background: #ffebf8;
-}
-
-.final-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
 }
 
 .final-header {
@@ -317,6 +303,7 @@ body.final-active {
   justify-content: center;
   margin-bottom: clamp(20px, 5vh, 40px);
   width: 100%;
+  font-family: 'Overpass Mono';
 }
 
 .final-poste-text {
@@ -361,6 +348,7 @@ body.final-active {
   font-size: clamp(16px, 3vw, 24px);
   font-weight: 700;
   transition: background-color 0.3s ease;
+  font-family: Inconsolata;
 }
 
 .final-save-btn img {
@@ -375,11 +363,12 @@ body.final-active {
   background-color: #f7ffe1;
   color: #ffa9de;
   font-size: clamp(16px, 3vw, 24px);
-  font-weight: 400;
+  font-weight: 700;
   border: none;
   cursor: pointer;
   border-radius: 6px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  font-family: Inconsolata;
 }
 
 .final-decoration {
@@ -387,7 +376,7 @@ body.final-active {
   z-index: -1;
 }
 
-.final-colares-tl {
+/* .final-colares-tl {
   width: clamp(25%, 30vw, 40%);
   max-width: 350px;
   top: 0;
@@ -399,14 +388,15 @@ body.final-active {
   max-width: 300px;
   bottom: 0;
   right: 0;
-}
+} */
 
-#final-canvas-container {
-  width: 80%;
-  max-width: 95%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+#final-img-container {
+  width: 85%;
+  max-width: 900px;
+  aspect-ratio: 1063 / 591;
+  rotate: 1.8deg;
+  border-radius: 9%;
+  box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
 }
 
 .final-logo {

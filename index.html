@@ -8,6 +8,9 @@
     />
     <script src="./pixi.js"></script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&family=Overpass+Mono:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="app">
@@ -65,57 +68,57 @@
 
       <!-- Builder Screen -->
       <div id="screen-builder" class="screen">
-        <div id="builder-canvas-container"></div>
-        <div class="builder-decoration-btns">
-          <button class="builder-decoration-btn" data-type="photo">
-            <img src="./assets/placeholders/camera.png" alt="Logo" />
-          </button>
-          <button class="builder-decoration-btn" data-type="logo">
-            <img src="./assets/placeholders/logo.png" alt="Logo" />
-          </button>
-          <button class="builder-decoration-btn" data-type="flower">
-            <img src="./assets/placeholders/flower.png" alt="Flower" />
-          </button>
-          <button class="builder-decoration-btn" data-type="heart">
-            <img src="./assets/placeholders/heart.png" alt="Heart" />
-          </button>
-          <button class="builder-decoration-btn" data-type="pearl">
-            <img src="./assets/placeholders/pearl.png" alt="Pearl" />
-          </button>
-          <button class="builder-decoration-btn" data-type="ribbon">
-            <img src="./assets/placeholders/ribbon.png" alt="Ribbon" />
-          </button>
-          <button class="builder-decoration-btn" data-type="star">
-            <img src="./assets/placeholders/star.png" alt="Star" />
-          </button>
-          <button class="builder-decoration-btn" data-type="symbol">
-            <img src="./assets/placeholders/symbol.png" alt="Symbol" />
-          </button>
-        </div>
+        <div class="builder-decoration-container">
+          <div class="builder-decoration-btns">
+            <button class="builder-decoration-btn" data-type="photo">
+              <img src="./assets/placeholders/camera.png" alt="Logo" />
+            </button>
+            <button class="builder-decoration-btn" data-type="logo">
+              <img src="./assets/placeholders/logo.png" alt="Logo" />
+            </button>
+            <button class="builder-decoration-btn" data-type="flower">
+              <img src="./assets/placeholders/flower.png" alt="Flower" />
+            </button>
+            <button class="builder-decoration-btn" data-type="heart">
+              <img src="./assets/placeholders/heart.png" alt="Heart" />
+            </button>
+            <button class="builder-decoration-btn" data-type="pearl">
+              <img src="./assets/placeholders/pearl.png" alt="Pearl" />
+            </button>
+            <button class="builder-decoration-btn" data-type="ribbon">
+              <img src="./assets/placeholders/ribbon.png" alt="Ribbon" />
+            </button>
+            <button class="builder-decoration-btn" data-type="star">
+              <img src="./assets/placeholders/star.png" alt="Star" />
+            </button>
+            <button class="builder-decoration-btn" data-type="symbol">
+              <img src="./assets/placeholders/symbol.png" alt="Symbol" />
+            </button>
+          </div>
 
-        <div class="builder-color-btns">
-          <button
-            class="builder-color-btn"
-            data-color="green"
-            style="background-color: #90ee90; border-color: #84cafa"
-          ></button>
-          <button
-            class="builder-color-btn"
-            data-color="pink"
-            style="background-color: #ffb6c1; border-color: #ffa9de"
-          ></button>
-          <button
-            class="builder-color-btn"
-            data-color="blue"
-            style="background-color: #a9d0e6; border-color: #84cafa"
-          ></button>
-          <button
-            class="builder-color-btn"
-            data-color="purple"
-            style="background-color: #c0b9df; border-color: #84cafa"
-          ></button>
+          <div class="builder-color-btns">
+            <button
+              class="builder-color-btn"
+              data-color="green"
+              style="background-color: #90ee90; border-color: #84cafa"
+            ></button>
+            <button
+              class="builder-color-btn"
+              data-color="pink"
+              style="background-color: #ffb6c1; border-color: #ffa9de"
+            ></button>
+            <button
+              class="builder-color-btn"
+              data-color="blue"
+              style="background-color: #a9d0e6; border-color: #84cafa"
+            ></button>
+            <button
+              class="builder-color-btn"
+              data-color="purple"
+              style="background-color: #c0b9df; border-color: #84cafa"
+            ></button>
+          </div>
         </div>
-
         <button class="builder-submit-btn" onclick="showFinalScreen()">
           OK
         </button>
@@ -123,8 +126,7 @@
 
       <!-- Final Screen -->
       <div id="screen-final" class="screen">
-        <div class="final-container">
-          <img
+        <!-- <img
             src="./assets/colares.png"
             class="final-decoration final-colares-tl"
             alt="Decorative colares"
@@ -133,28 +135,27 @@
             src="./assets/colares2.png"
             class="final-decoration final-colares-br"
             alt="Decorative colares"
-          />
-          <div class="final-header">
-            <div class="final-poste-text">
-              poste nas redes sociais com a hashtag
-            </div>
-            <div class="final-hashtag">#CARTEIRINHABLUSH</div>
+          /> -->
+        <div class="final-header">
+          <div class="final-poste-text">
+            poste nas redes sociais com a hashtag
           </div>
-
-          <div id="final-canvas-container"></div>
-
-          <div class="final-buttons">
-            <button class="final-save-btn" onclick="saveBadge()">
-              <img src="./assets/disquete.png" alt="Save" />
-              salvar
-            </button>
-            <button class="final-reset-btn" onclick="location.reload()">
-              faça outra carteirinha
-            </button>
-          </div>
-
-          <img src="assets/blushazul.png" class="final-logo" alt="Blush logo" />
+          <div class="final-hashtag">#CARTEIRINHABLUSH</div>
         </div>
+
+        <div id="final-img-container"></div>
+
+        <div class="final-buttons">
+          <button class="final-save-btn" onclick="saveBadge()">
+            <img src="./assets/disquete.png" alt="Save" />
+            salvar
+          </button>
+          <button class="final-reset-btn" onclick="location.reload()">
+            faça outra carteirinha
+          </button>
+        </div>
+
+        <img src="assets/blushazul.png" class="final-logo" alt="Blush logo" />
       </div>
     </div>
     <script src="app.js"></script>
