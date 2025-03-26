@@ -321,17 +321,34 @@ canvas {
 
 .final-img-buttons-container {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Creates 3 columns: left empty, middle for image, right for buttons */
+  align-items: center;
+  gap: 60px;
+  padding: 0 20px;
 }
 
+/* Center the image container in the middle column */
+#final-img-container {
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 1063 / 591;
+  rotate: 1.8deg;
+  border-radius: 9%;
+  box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
+  grid-column: 2; /* Places the image in the middle column */
+  justify-self: center;
+}
+
+/* Align the buttons in the right column */
 .final-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 600px;
+  gap: 20px;
+  grid-column: 3; /* Places the buttons in the right column */
+  justify-self: start;
 }
 
 .final-save-btn {
@@ -389,15 +406,6 @@ canvas {
   bottom: 0;
   right: 0;
 } */
-
-#final-img-container {
-  width: 85%;
-  max-width: 900px;
-  aspect-ratio: 1063 / 591;
-  rotate: 1.8deg;
-  border-radius: 9%;
-  box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
-}
 
 .final-logo {
   width: 50%;
