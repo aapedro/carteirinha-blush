@@ -441,12 +441,12 @@ function draw() {
 }
 
 function showFinalScreen() {
-  const finalCanvasContainer = document.getElementById("final-canvas-container");
-  finalCanvasContainer.innerHTML = "";
+  const finalImgContainer = document.getElementById("final-img-container");
+  finalImgContainer.innerHTML = "";
 
   const originalCanvas = document.querySelector("#builder-canvas-container canvas");
   if (originalCanvas) {
-    finalCanvasContainer.appendChild(originalCanvas);
+    finalImgContainer.appendChild(originalCanvas);
   }
 
   document.querySelectorAll(".screen").forEach((screen) => {
