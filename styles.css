@@ -291,6 +291,7 @@ canvas {
 /* ---------- FINAL SCREEN ---------- */
 #screen-final {
   background-color: #ffebf8;
+  justify-content: space-between;
   gap: 50px
 }
 
@@ -299,9 +300,10 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: clamp(20px, 5vh, 40px);
   width: 100%;
+  height: 20%;
   font-family: 'Overpass Mono';
+  text-align: center;
 }
 
 .final-poste-text {
@@ -309,7 +311,6 @@ canvas {
   color: #3e7cb6;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: clamp(5px, 1vh, 10px);
 }
 
 .final-hashtag {
@@ -323,6 +324,7 @@ canvas {
 .final-img-buttons-container {
   width: 100%;
   display: grid;
+  height: 80%;
   grid-template-columns: 1fr 2fr 1fr; /* Creates 3 columns: left empty, middle for image, right for buttons */
   align-items: center;
   gap: 5%;
@@ -379,6 +381,7 @@ canvas {
 
 .final-logo {
   height: 20%;
+  max-height: 200px;
 }
 
 /* Media Queries for Final Screen */
@@ -387,12 +390,16 @@ canvas {
   .final-img-buttons-container {
     display: flex;
     flex-direction: column;
-    height: 40%;
+    height: 50%;
   }
   
   #final-img-container {
     max-width: 600px;
     min-width: 300px;
+  }
+
+  .final-header {
+    margin-top: 10%;
   }
 
   .final-buttons {
