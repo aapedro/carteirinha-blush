@@ -347,7 +347,7 @@ canvas {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  width: 40%;
+  width: 100%;
 }
 
 .final-save-btn {
@@ -398,13 +398,13 @@ canvas {
     min-width: 300px;
   }
 
-  .final-header {
-    margin-top: 10%;
-  }
-
   .final-buttons {
     flex-direction: row;
     gap: 20px;
+  }
+  
+  .final-header {
+    margin-top: 10%;
   }
   
   .final-logo {
