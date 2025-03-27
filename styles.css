@@ -289,7 +289,6 @@ canvas {
 #screen-final {
   background-color: #ffebf8;
   overflow: hidden;
-  padding-top: 100px;
 }
 
 .final-header {
@@ -435,6 +434,9 @@ canvas {
 }
 
 @media (max-height: 900px) {
+  .final-header {
+    padding-top: 10%;
+  }
   .final-logo {
     display: none
   }
