@@ -301,6 +301,7 @@ canvas {
   justify-content: center;
   font-family: 'Overpass Mono';
   text-align: center;
+  padding-top: 10%;
 }
 
 .final-poste-text {
@@ -448,4 +449,7 @@ canvas {
     padding-top: 12%;
   }
 
+  .final-header {
+    padding-top: unset;
+  }
 }
