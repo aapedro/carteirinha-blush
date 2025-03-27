@@ -7,8 +7,6 @@
 
 #app {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
 }
@@ -291,8 +289,9 @@ canvas {
 /* ---------- FINAL SCREEN ---------- */
 #screen-final {
   background-color: #ffebf8;
-  justify-content: space-between;
-  gap: 50px
+  justify-content: space-evenly;
+  height: 100vh;
+  padding: 20px;
 }
 
 .final-header {
@@ -348,6 +347,7 @@ canvas {
   justify-content: center;
   gap: 20px;
   width: 100%;
+  height: 100%;
 }
 
 .final-save-btn {
@@ -361,14 +361,17 @@ canvas {
   cursor: pointer;
   font-weight: 700;
   font-family: Inconsolata;
+  font-size: 1.5em;
+  width: 60%;
+  height: 10%;
+  gap: 10%;
 }
 
 .final-save-btn img {
-  width: 25%;
+  height: 80%;
 }
 
 .final-reset-btn {
-  padding: 5px;
   background-color: #f7ffe1;
   color: #ffa9de;
   font-weight: 700;
@@ -377,38 +380,59 @@ canvas {
   border-radius: 6px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   font-family: Inconsolata;
+  font-size: 120%;
+  width: 60%;
+  height: 10%;
 }
 
 .final-logo {
-  height: 20%;
-  max-height: 200px;
+  height: 15%;
+  max-height: 100px;
 }
 
 /* Media Queries for Final Screen */
 /* For screens under 1000px width */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .final-img-buttons-container {
     display: flex;
     flex-direction: column;
     height: 50%;
+    gap: 50px;
   }
   
+  #screen-final {
+    justify-content: space-between;
+  }
   #final-img-container {
     max-width: 600px;
     min-width: 300px;
   }
 
   .final-buttons {
-    flex-direction: row;
     gap: 20px;
+    justify-content: center; /* Center buttons when they wrap */
   }
   
-  .final-header {
-    margin-top: 10%;
+  .final-save-btn {
+    width: 150px;
+    height: 60px;
+  }
+  
+  .final-reset-btn {
+    width: 150px;
+    height: 60px;
   }
   
   .final-logo {
-    height: 10%;
-    width: auto;
+    width: 30%;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .final-logo {
+    display: absolute;
+    scale: 0;
   }
 }
