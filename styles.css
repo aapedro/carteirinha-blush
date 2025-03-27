@@ -229,8 +229,9 @@ canvas {
 }
 
 .builder-submit-btn {
-  width: 90px;
-  height: 50px;
+  width: 100px;
+  height: 55px;
+  margin: 30px auto;
   font-weight: 700;
   background: transparent;
   border: 2px #84cafa solid;
@@ -288,7 +289,9 @@ canvas {
 /* ---------- FINAL SCREEN ---------- */
 #screen-final {
   background-color: #ffebf8;
-  overflow: hidden;
+  justify-content: center;
+  gap: 0px;
+  overflow: hidden
 }
 
 .final-header {
@@ -296,7 +299,6 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   font-family: 'Overpass Mono';
   text-align: center;
 }
@@ -429,15 +431,21 @@ canvas {
 @media (max-width: 400px) {
 
   .final-logo {
-    display: none
+    display: absolute;
+    scale: 0;
   }
 }
 
 @media (max-height: 900px) {
-  .final-header {
-    padding-top: 10%;
-  }
   .final-logo {
-    display: none
+    display: absolute;
+    scale: 0;
   }
+}
+
+@media (max-height: 900px) and (min-width: 1200px) {
+  #screen-final {
+    padding-top: 12%;
+  }
+
 }
