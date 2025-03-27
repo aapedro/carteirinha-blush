@@ -439,3 +439,10 @@ canvas {
     scale: 0;
   }
 }
+
+@media (max-height: 900px) {
+  .final-logo {
+    display: absolute;
+    scale: 0;
+  }
+}
