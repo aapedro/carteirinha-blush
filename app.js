@@ -405,7 +405,7 @@ function draw() {
   const textStyle = new PIXI.TextStyle({
     fontFamily: "font1",
     fontSize: 65,
-    fill: "#a085de",
+    fill: "#394070",
     wordWrap: true,
     wordWrapWidth: 450,
   });
