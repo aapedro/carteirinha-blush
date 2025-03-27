@@ -5,8 +5,8 @@ let selectedDecoration = "photo";
 let duoToneColor = 0x2e8b57;
 
 const badge = {
-  name: "DreDre",
-  occupation: "Blusher",
+  name: "",
+  occupation: "blogueira profissional",
   photo: 1,
   flower: 1,
   heart: 1,
@@ -76,21 +76,6 @@ function createTwoToneDuotoneMatrix(shadowColor, highlightColor) {
   ];
 }
 
-function cycleOptions(direction) {
-  const select = document.getElementById("input-occupation");
-  const selectedIndex = select.selectedIndex;
-
-  if (direction === "prev") {
-    select.selectedIndex =
-      selectedIndex > 1 ? selectedIndex - 1 : select.options.length - 1;
-  } else if (direction === "next") {
-    select.selectedIndex =
-      selectedIndex < select.options.length - 1 ? selectedIndex + 1 : 1;
-  }
-
-  handleTextUpdate({ target: select });
-}
-
 function handleImageUpload(event) {
   const file = event.target.files[0];
   if (file) {
@@ -127,7 +112,9 @@ function initBuilderUI() {
     .querySelector('.builder-decoration-btn[data-type="flower"]')
     .classList.add("active");
 
-  const decorationButtons = document.querySelectorAll(".builder-decoration-btn");
+  const decorationButtons = document.querySelectorAll(
+    ".builder-decoration-btn"
+  );
   decorationButtons.forEach((button) => {
     button.addEventListener("click", handleDecorationSelect);
   });
@@ -237,15 +224,15 @@ function startBuilder() {
   const name = document.getElementById("input-name").value.trim();
   const occupation = document.getElementById("input-occupation").value;
 
-  // if (!name) {
-  //   alert("Por favor, insira seu nome");
-  //   return;
-  // }
+  if (!name) {
+    alert("Por favor, insira seu nome");
+    return;
+  }
 
-  // if (!occupation) {
-  //   alert("Por favor, escolha sua ocupação");
-  //   return;
-  // }
+  if (!occupation) {
+    alert("Por favor, escolha sua ocupação");
+    return;
+  }
 
   document.getElementById("screen-home").classList.remove("active");
   document.getElementById("screen-builder").classList.add("active");
@@ -262,7 +249,7 @@ async function initPixi() {
     width: 1063,
     height: 591,
     backgroundAlpha: 0,
-    resolution: 1
+    resolution: 1,
   });
 
   builderScreen.insertBefore(app.canvas, builderScreen.firstChild);
@@ -417,10 +404,10 @@ function draw() {
 
   const textStyle = new PIXI.TextStyle({
     fontFamily: "font1",
-    fontSize: 76,
+    fontSize: 65,
     fill: "#a085de",
     wordWrap: true,
-    wordWrapWidth: 440,
+    wordWrapWidth: 450,
   });
 
   const name = new PIXI.Text({
@@ -443,30 +430,30 @@ function draw() {
 function showFinalScreen() {
   // First ensure the canvas is fully rendered
   app.render(); // Force a render
-  
+
   // Wait for the next frame to ensure rendering is complete
   requestAnimationFrame(() => {
     // Get the canvas as a data URL
-    const dataURL = app.canvas.toDataURL('image/png');
-    
+    const dataURL = app.canvas.toDataURL("image/png");
+
     // Create an image element to display the badge
-    const img = document.createElement('img');
+    const img = document.createElement("img");
     img.src = dataURL;
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'contain';
-    
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.objectFit = "contain";
+
     // Clear and update the final image container
     const finalImgContainer = document.getElementById("final-img-container");
-    finalImgContainer.innerHTML = '';
+    finalImgContainer.innerHTML = "";
     finalImgContainer.appendChild(img);
-    
+
     // Update screen visibility
     document.querySelectorAll(".screen").forEach((screen) => {
       screen.classList.remove("active");
     });
     document.getElementById("screen-final").classList.add("active");
-    
+
     // Update body classes
     document.body.classList.remove("builder-active");
     document.body.classList.add("final-active");
