@@ -441,22 +441,36 @@ function draw() {
 }
 
 function showFinalScreen() {
-  const finalImgContainer = document.getElementById("final-img-container");
-  finalImgContainer.innerHTML = "";
-
-  const originalCanvas = document.querySelector("#builder-canvas-container canvas");
-  if (originalCanvas) {
-    finalImgContainer.appendChild(originalCanvas);
-  }
-
-  document.querySelectorAll(".screen").forEach((screen) => {
-    screen.classList.remove("active");
+  // First ensure the canvas is fully rendered
+  app.render(); // Force a render
+  
+  // Wait for the next frame to ensure rendering is complete
+  requestAnimationFrame(() => {
+    // Get the canvas as a data URL
+    const dataURL = app.canvas.toDataURL('image/png');
+    
+    // Create an image element to display the badge
+    const img = document.createElement('img');
+    img.src = dataURL;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'contain';
+    
+    // Clear and update the final image container
+    const finalImgContainer = document.getElementById("final-img-container");
+    finalImgContainer.innerHTML = '';
+    finalImgContainer.appendChild(img);
+    
+    // Update screen visibility
+    document.querySelectorAll(".screen").forEach((screen) => {
+      screen.classList.remove("active");
+    });
+    document.getElementById("screen-final").classList.add("active");
+    
+    // Update body classes
+    document.body.classList.remove("builder-active");
+    document.body.classList.add("final-active");
   });
-
-  document.getElementById("screen-final").classList.add("active");
-
-  document.body.classList.remove("builder-active");
-  document.body.classList.add("final-active");
 }
 
 function saveBadge() {
