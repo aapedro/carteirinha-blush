@@ -334,10 +334,13 @@ canvas {
   min-width: 600px;
   aspect-ratio: 1063 / 591;
   rotate: 1.8deg;
-  border-radius: 9%;
-  box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
   grid-column: 2;
   justify-self: center;
+}
+
+#final-img-container img {
+  box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
+  border-radius: 20px;
 }
 
 .final-buttons {
