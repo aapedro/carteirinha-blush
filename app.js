@@ -407,7 +407,8 @@ function draw() {
     fontSize: 65,
     fill: "#394070",
     wordWrap: true,
-    wordWrapWidth: 450,
+    wordWrapWidth: 400,
+    lineHeight: 50,
   });
 
   const name = new PIXI.Text({
@@ -415,7 +416,7 @@ function draw() {
     style: textStyle,
   });
   name.x = 450;
-  name.y = 360;
+  name.y = 355;
   container.addChild(name);
 
   const occupation = new PIXI.Text({
@@ -445,8 +446,7 @@ function showFinalScreen() {
 
     // Clear and update the final image container
     const finalImgContainer = document.getElementById("final-img-container");
-    finalImgContainer.innerHTML = "";
-    finalImgContainer.appendChild(img);
+    finalImgContainer.insertBefore(img, finalImgContainer.firstChild);
 
     // Update screen visibility
     document.querySelectorAll(".screen").forEach((screen) => {

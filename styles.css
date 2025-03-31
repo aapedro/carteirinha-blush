@@ -1,3 +1,28 @@
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('https://arquivoblush.neocities.org/fonts/courierprime-regular-webfont.woff2') format('woff2'),
+       url('https://arquivoblush.neocities.org/fonts/courierprime-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('https://arquivoblush.neocities.org/fonts/inconsolata-variablefont_wdthwght-webfont.woff2') format('woff2'),
+       url('https://arquivoblush.neocities.org/fonts/inconsolata-variablefont_wdthwght-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Overpass Mono';
+  src: url('https://arquivoblush.neocities.org/fonts/OverpassMono-Regular.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* ---------- GENERAL STYLES ---------- */
 * {
   box-sizing: border-box;
@@ -86,6 +111,10 @@ canvas {
   font-family: 'Courier Prime';
   font-weight: 400;
   text-align: center;
+}
+
+#input-occupation {
+  font-size: 1em;
 }
 
 #input-name::placeholder {
@@ -289,34 +318,10 @@ canvas {
 /* ---------- FINAL SCREEN ---------- */
 #screen-final {
   background-color: #ffebf8;
-  justify-content: center;
-  gap: 0px;
-  overflow: hidden
-}
-
-.final-header {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Overpass Mono';
-  text-align: center;
-  padding-top: 10%;
-}
-
-.final-poste-text {
-  font-size: clamp(16px, 4vw, 25px);
-  color: #3e7cb6;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.final-hashtag {
-  font-size: clamp(18px, 5vw, 30px);
-  color: #ffa9de;
-  font-weight: 700;
-  letter-spacing: 0;
-  z-index: 2;
+  overflow: hidden;
+  flex-direction: column;
 }
 
 .final-img-buttons-container {
@@ -329,14 +334,26 @@ canvas {
 #final-img-container {
   width: 90%;
   min-width: 600px;
-  aspect-ratio: 1063 / 591;
-  rotate: 1.8deg;
   grid-column: 2;
   justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+#final-img-container a {
+  font-family: 'Overpass Mono';
+  font-size: 1.1em;
+  color: #3e7cb6;
+  font-weight: 700;
 }
 
 #final-img-container img {
-  box-shadow: 4px 2px 4px 1px rgba(152, 162, 239, 0.5);
+  aspect-ratio: 1063 / 591;
+  rotate: 1.8deg;
+  box-shadow: 2px 2px 2px 2px rgba(152, 162, 239, 0.3);
   border-radius: 20px;
 }
 
@@ -362,6 +379,7 @@ canvas {
   font-weight: 700;
   font-family: Inconsolata;
   font-size: 1.5em;
+  max-width: 250px;
   width: 60%;
   height: 10%;
   gap: 10%;
@@ -382,6 +400,7 @@ canvas {
   font-family: Inconsolata;
   font-size: 120%;
   width: 60%;
+  max-width: 250px;
   height: 10%;
 }
 
@@ -399,10 +418,7 @@ canvas {
     height: 50%;
     gap: 50px;
   }
-  
-  #screen-final {
-    justify-content: space-between;
-  }
+
   #final-img-container {
     max-width: 600px;
     min-width: 300px;
@@ -411,6 +427,7 @@ canvas {
   .final-buttons {
     gap: 20px;
     justify-content: center; /* Center buttons when they wrap */
+    flex-direction: row;
   }
   
   .final-save-btn {
@@ -434,22 +451,5 @@ canvas {
   .final-logo {
     display: absolute;
     scale: 0;
-  }
-}
-
-@media (max-height: 900px) {
-  .final-logo {
-    display: absolute;
-    scale: 0;
-  }
-}
-
-@media (max-height: 900px) and (min-width: 1200px) {
-  #screen-final {
-    padding-top: 12%;
-  }
-
-  .final-header {
-    padding-top: unset;
   }
 }
